@@ -1,0 +1,2 @@
+# The package ships SHA-256 over its own artifacts; keep bytes verbatim.
+* -text
