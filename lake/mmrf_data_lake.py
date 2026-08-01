@@ -29,12 +29,32 @@ COLUMN_ORDER = (
     "family_flags",
 )
 
+# Bit masks for the `family_flags` column. Each is set on the LARGER member of
+# the pair, which is what lets an append leave every prior shard untouched.
+#
+# There is deliberately no `sophie_germain_relation` entry. It used to be here
+# with mask 8 — the same mask as `safe_prime` — while `_shard_arrays` never set
+# a Sophie Germain bit at all. Because `_aggregates` derives `family_counts` by
+# iterating this mapping, the surface reported the safe-prime count a second
+# time under a Sophie Germain label: a real quantity, a plausible magnitude, and
+# the wrong one.
+#
+# Concretely, over [0, 2_000_000) it answered 7746. That is the count of Sophie
+# Germain primes p whose partner 2p+1 also lands inside the range — the same
+# pairs the safe-prime bit already counts, recorded at the other member. The
+# number of Sophie Germain primes below 2_000_000 is 13934. Both readings are
+# defensible from the name, which is exactly the problem: the caller cannot tell
+# which one they were handed, and neither can this mapping.
+#
+# The column cannot simply gain a bit 16: the generation-2 dataset is frozen and
+# its shard bytes are covered by the signed stable manifest. Encoding a new
+# family means a new generation, which is an append, not an edit. Until then the
+# honest surface is four families — the four the column actually carries.
 FAMILY_BITS = {
     "twin_prime": 1,
     "cousin_prime": 2,
     "sexy_prime": 4,
     "safe_prime": 8,
-    "sophie_germain_relation": 8,
 }
 
 ALLOWED_OPERATIONS = {
@@ -79,6 +99,14 @@ QUERY_COST = {
     "family_counts": 3,
     "workflow_replay": 10,
 }
+
+
+class EmptyShardSelection(LookupError):
+    """Raised when a shard-range query resolves to no registered shards.
+
+    Distinct from "this range contains no primes", which is a real aggregate
+    result. This means the index cannot answer the question at all.
+    """
 
 
 def utc_now() -> str:
@@ -850,6 +878,26 @@ class DataLake:
             item = dict(row)
             item["aggregate"] = json.loads(item.pop("aggregate_json"))
             result.append(item)
+        if not result:
+            # An aggregate over nothing is not an aggregate of zero. The index
+            # is built on append, so an empty selection means the requested
+            # shards are not registered here — a missing index reads exactly
+            # like a range that legitimately holds no primes.
+            #
+            # Without this guard the four shipped operations fail four
+            # different ways: interval_density raises IndexError on shards[0],
+            # gap_quantiles and residue_distribution raise ValueError inside
+            # np.concatenate, and family_counts returns status OK with every
+            # count at zero and files_opened at zero. The last is the dangerous
+            # one, because a replay of the published baseline workflow then
+            # reports "0 twin primes below 2,000,000" and calls it a success.
+            raise EmptyShardSelection(
+                f"No shards registered for index range "
+                f"[{start}, {start + count}). The lake index at "
+                f"{getattr(self, 'index_database', 'lake_state/lake_index.sqlite')} "
+                f"holds no matching rows; append the dataset or point "
+                f"--index-database at an index that does."
+            )
         return result
 
     def load_columns(

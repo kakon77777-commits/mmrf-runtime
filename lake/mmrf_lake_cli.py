@@ -7,6 +7,7 @@ from pathlib import Path
 
 from mmrf_data_lake import (
     DataLake,
+    EmptyShardSelection,
     ScientificQueryGuard,
 )
 
@@ -44,12 +45,26 @@ def cmd_query(args) -> None:
         if args.request
         else json.load(sys.stdin)
     )
-    result = instance.execute_query(
-        request,
-        session_id=args.session,
-        guard=guard,
-        workflow_dir=Path(args.workflow_dir),
-    )
+    try:
+        result = instance.execute_query(
+            request,
+            session_id=args.session,
+            guard=guard,
+            workflow_dir=Path(args.workflow_dir),
+        )
+    except EmptyShardSelection as exc:
+        # Report it as a query outcome rather than a traceback, so a replay
+        # script sees a structured refusal and a non-zero exit instead of an
+        # unhandled exception.
+        result = {
+            "schema": "mmrf-scientific-query-response-0.8",
+            "status": "NO_DATA",
+            "query": request,
+            "reason": str(exc),
+        }
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        instance.close()
+        raise SystemExit(2)
     print(json.dumps(result, ensure_ascii=False, indent=2))
     instance.close()
     raise SystemExit(0 if result["status"] == "OK" else 2)
