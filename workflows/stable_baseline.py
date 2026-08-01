@@ -84,7 +84,16 @@ def main() -> int:
     root = Path(args.project_root).resolve()
     manifest, shard_paths = load_stable(root)
 
-    columns = ("prime", "previous_gap", "residue_30", "family_flags", "wheel30_class")
+    columns = (
+        "prime",
+        "previous_gap",
+        "residue_6",
+        "residue_30",
+        "residue_210",
+        "decimal_digits",
+        "family_flags",
+        "wheel30_class",
+    )
     parts = {c: [] for c in columns}
     for path in shard_paths:
         with np.load(path) as handle:
@@ -103,9 +112,37 @@ def main() -> int:
     gaps = data["previous_gap"]
     gaps = gaps[gaps > 0]
 
-    residue_counts = {}
-    for value, count in zip(*np.unique(data["residue_30"], return_counts=True)):
-        residue_counts[str(int(value))] = int(count)
+    def tally(array):
+        return {
+            str(int(v)): int(c) for v, c in zip(*np.unique(array, return_counts=True))
+        }
+
+    residue_counts = {
+        "6": tally(data["residue_6"]),
+        "30": tally(data["residue_30"]),
+        "210": tally(data["residue_210"]),
+    }
+    gap_histogram = tally(gaps)
+
+    # Order-of-magnitude comparison. `decimal_digits` is a stored column, so the
+    # band boundaries are the dataset's own, not re-derived here.
+    magnitude_bands = []
+    for digits, count in sorted(
+        tally(data["decimal_digits"]).items(), key=lambda kv: int(kv[0])
+    ):
+        d = int(digits)
+        low, high = 10 ** (d - 1), min(10**d, limit)
+        if d == 1:
+            low = 0
+        magnitude_bands.append(
+            {
+                "decimal_digits": d,
+                "range_start": low,
+                "range_end_exclusive": high,
+                "prime_count": count,
+                "density": count / (high - low),
+            }
+        )
 
     wheel_counts = {}
     for value, count in zip(*np.unique(data["wheel30_class"], return_counts=True)):
@@ -152,8 +189,10 @@ def main() -> int:
                 str(q): float(np.quantile(gaps, q)) for q in (0.5, 0.9, 0.99)
             },
         },
-        "residue_distribution_mod_30": residue_counts,
+        "gap_histogram": gap_histogram,
+        "residue_distribution": residue_counts,
         "wheel30_class_distribution": wheel_counts,
+        "magnitude_bands": magnitude_bands,
         "family_counts": families,
         "family_counting_note": (
             "Each pair family is counted at its larger observed member, which "
