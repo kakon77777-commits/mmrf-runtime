@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Dataset Promotion Receipt 0.9",
+  "type": "object",
+  "required": [
+    "schema",
+    "promotion_id",
+    "proposal_id",
+    "proposal_sha256",
+    "candidate_manifest_sha256",
+    "approval_threshold",
+    "approval_count",
+    "reviewers",
+    "promoted_at",
+    "receipt_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-dataset-promotion-receipt-0.9"
+    },
+    "approval_threshold": {
+      "type": "integer",
+      "minimum": 2
+    }
+  },
+  "additionalProperties": true
+}

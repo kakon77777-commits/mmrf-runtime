@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Installation State 1.0",
+  "type": "object",
+  "required": [
+    "schema",
+    "release_id",
+    "version",
+    "profile",
+    "selected_profiles",
+    "source_release_manifest_sha256",
+    "installed_at",
+    "file_count",
+    "inventory",
+    "installation_state_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-installation-state-1.0"
+    },
+    "release_id": {
+      "const": "MMRF-1.0.0"
+    },
+    "version": {
+      "const": "1.0.0"
+    },
+    "profile": {
+      "enum": [
+        "public-research",
+        "controlled-research"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

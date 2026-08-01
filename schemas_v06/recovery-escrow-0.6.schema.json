@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Recovery Escrow 0.6",
+  "type": "object",
+  "required": [
+    "schema",
+    "package_id",
+    "node_id",
+    "key_epoch",
+    "threshold",
+    "share_count",
+    "nonce",
+    "encrypted_private_key",
+    "share_hashes",
+    "manifest_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-recovery-escrow-0.6"
+    },
+    "threshold": {
+      "type": "integer",
+      "minimum": 2
+    },
+    "share_count": {
+      "type": "integer",
+      "minimum": 2
+    }
+  },
+  "additionalProperties": true
+}

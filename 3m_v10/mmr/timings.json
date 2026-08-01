@@ -1,0 +1,17 @@
+{
+  "stable_manifest_and_20_shards": {
+    "median_ms": 1.012221,
+    "p90_ms": 1.094112
+  },
+  "v08_density_query": {
+    "median_ms": 1.319638,
+    "p90_ms": 2.370036
+  },
+  "signed_release_verification": {
+    "median_ms": 3.310089,
+    "p90_ms": 3.514002
+  },
+  "public_install": {
+    "elapsed_ms": 7.221681
+  }
+}

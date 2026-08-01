@@ -1,0 +1,24 @@
+# MMRF v0.6 Test Results
+
+- Smoke test: PASS
+- Transparency Merkle root: PASS
+- Inclusion proof: PASS
+- Witness 2-of-3 quorum: PASS
+- One-witness quorum rejected: PASS
+- Internally consistent same-size split view rejected: equivocation_detected
+- STH rollback rejected: tree_size_rollback
+- Node A epoch 1 no longer current: PASS
+- Node A epoch 2 current after rotation: PASS
+- Old epoch decrypt rejected: PermissionError
+- Node B revoked: node_revoked
+- Revoked node future decrypt rejected: PermissionError
+- Ciphertext preserved across rotation: PASS
+- Ciphertext preserved across revocation: PASS
+- Ciphertext preserved across recovery: PASS
+- 3-of-5 recovery: PASS
+- 2 shares rejected: insufficient_shares
+- Tampered share rejected: share_self_hash_mismatch
+- Node A epoch 3 current after recovery: PASS
+- Recovered payload decrypt: PASS
+- Private keys in release ZIP: NO
+- Recovery shares in release ZIP: NO

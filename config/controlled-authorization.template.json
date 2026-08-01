@@ -1,0 +1,9 @@
+{
+  "schema": "mmrf-controlled-install-authorization-1.0",
+  "allow_controlled_components": false,
+  "approval_reference": "REPLACE_WITH_INTERNAL_APPROVAL_REFERENCE",
+  "approved_profiles": [],
+  "issued_at": "YYYY-MM-DDTHH:MM:SS+00:00",
+  "expires_at": "YYYY-MM-DDTHH:MM:SS+00:00",
+  "note": "Set allow_controlled_components to true only after explicit internal authorization. This file is not a cryptographic approval."
+}

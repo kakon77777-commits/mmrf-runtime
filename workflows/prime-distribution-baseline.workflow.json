@@ -1,0 +1,45 @@
+{
+  "schema": "mmrf-scientific-workflow-0.8",
+  "workflow_id": "prime-distribution-baseline",
+  "description": "Replayable aggregate study over the first 2,000,000 integers.",
+  "steps": [
+    {
+      "step_id": "density",
+      "query": {
+        "operation": "interval_density",
+        "shard_start": 0,
+        "shard_count": 20
+      }
+    },
+    {
+      "step_id": "gap_quantiles",
+      "query": {
+        "operation": "gap_quantiles",
+        "shard_start": 0,
+        "shard_count": 20,
+        "quantiles": [
+          0.5,
+          0.9,
+          0.99
+        ]
+      }
+    },
+    {
+      "step_id": "residue_mod30",
+      "query": {
+        "operation": "residue_distribution",
+        "shard_start": 0,
+        "shard_count": 20,
+        "modulo": 30
+      }
+    },
+    {
+      "step_id": "families",
+      "query": {
+        "operation": "family_counts",
+        "shard_start": 0,
+        "shard_count": 20
+      }
+    }
+  ]
+}

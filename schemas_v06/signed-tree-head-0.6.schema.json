@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Signed Tree Head 0.6",
+  "type": "object",
+  "required": [
+    "schema",
+    "log_id",
+    "tree_size",
+    "root_hash_sha256",
+    "previous_sth_sha256",
+    "log_signature_ed25519",
+    "sth_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-signed-tree-head-0.6"
+    },
+    "tree_size": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": true
+}

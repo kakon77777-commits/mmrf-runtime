@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Stable Release Manifest 1.0",
+  "type": "object",
+  "required": [
+    "schema",
+    "release_id",
+    "version",
+    "status",
+    "stable_dataset_manifest_sha256",
+    "frozen_semantics",
+    "safety",
+    "profiles",
+    "payload_checksums",
+    "signature_ed25519",
+    "document_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-stable-release-manifest-1.0"
+    },
+    "release_id": {
+      "const": "MMRF-1.0.0"
+    },
+    "version": {
+      "const": "1.0.0"
+    },
+    "status": {
+      "const": "STABLE"
+    }
+  },
+  "additionalProperties": true
+}

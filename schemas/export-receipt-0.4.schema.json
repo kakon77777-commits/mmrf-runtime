@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evemisslab.com/mmrf/schemas/export-receipt-0.4.json",
+  "title": "MMRF Export Receipt 0.4",
+  "type": "object",
+  "required": [
+    "schema",
+    "export_id",
+    "candidate_sha256",
+    "approval_roles",
+    "scan",
+    "released_at",
+    "export_file",
+    "receipt_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-export-receipt-0.4"
+    },
+    "approval_roles": {
+      "type": "array",
+      "contains": {
+        "const": "data_owner"
+      },
+      "minContains": 1
+    },
+    "scan": {
+      "type": "object",
+      "properties": {
+        "passed": {
+          "const": true
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

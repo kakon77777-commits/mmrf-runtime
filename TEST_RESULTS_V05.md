@@ -1,0 +1,26 @@
+# MMRF v0.5 Test Results
+
+- Smoke test: PASS
+- Schema validation: PASS
+- Per-object AES-256-GCM encryption: PASS
+- Recipient-specific X25519/HKDF DEK wrapping: PASS
+- Ed25519 object, checkpoint and bundle signatures: PASS
+- Node B decrypts 32 replicated objects: PASS
+- First replication: ACCEPTED
+- Incremental replication: ACCEPTED
+- Exact bundle replay: REJECTED — bundle_replay
+- Re-signed old-checkpoint rollback: REJECTED — checkpoint_sequence_not_monotonic
+- Tampered ciphertext bundle: REJECTED — bundle_signature_invalid
+- Untrusted measurement attestation: REJECTED — attestation_invalid
+- Signed checkpoint fork: REJECTED — checkpoint_chain_mismatch
+- Unauthorized Node C: REJECTED
+- Runtime secret absent from envelope: PASS
+- Plaintext hash absent from outer envelope: PASS
+- Node C omitted from recipient wraps: PASS
+- Node A audit: PASS
+- Node B audit: PASS
+- Offline recovery copy audit: PASS
+- Tampered local audit rejected: PASS
+- Private runtime keys absent from release: PASS
+- Attestation: SOFTWARE_SIGNED_PROTOTYPE, not hardware attestation
+- HSM: PKCS#11 interface boundary only; no fake HSM implementation

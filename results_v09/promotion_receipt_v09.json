@@ -1,0 +1,15 @@
+{
+  "schema": "mmrf-dataset-promotion-receipt-0.9",
+  "promotion_id": "promotion:d382373c-b8c2-4ea9-9f6e-cb8b2762ff5f",
+  "proposal_id": "proposal:mmrf-schema-v09",
+  "proposal_sha256": "2bb5d20ee32708de87b0462fb48173c90caf80c1024bcdf012229c4dc2ca2c6d",
+  "candidate_manifest_sha256": "73015c5329ae71900ef3f4aca7f35152f3d96a435e65e3bddbd1ae513d597420",
+  "approval_threshold": 2,
+  "approval_count": 2,
+  "reviewers": [
+    "reviewer_math",
+    "reviewer_security"
+  ],
+  "promoted_at": "2026-07-29T13:59:44.009729+00:00",
+  "receipt_sha256": "6ad7c85305f45cef095f72eb55ae9f097d9a70388615e5f609fbb83f024c0658"
+}

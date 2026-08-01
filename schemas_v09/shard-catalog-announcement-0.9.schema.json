@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Shard Catalog Announcement 0.9",
+  "type": "object",
+  "required": [
+    "schema",
+    "node_id",
+    "catalog_version",
+    "dataset_manifest_sha256",
+    "previous_announcement_sha256",
+    "shard_count",
+    "shards",
+    "signature_ed25519",
+    "document_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-shard-catalog-announcement-0.9"
+    },
+    "catalog_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "shards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "shard_index",
+          "cid",
+          "file_sha256",
+          "content_sha256",
+          "row_count"
+        ]
+      }
+    }
+  },
+  "additionalProperties": true
+}

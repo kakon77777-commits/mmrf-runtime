@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Replication Bundle 0.5",
+  "type": "object",
+  "required": [
+    "schema",
+    "bundle_id",
+    "origin_node_id",
+    "recipient_node_id",
+    "attestation",
+    "checkpoint",
+    "audit_events",
+    "objects",
+    "bundle_signature_ed25519",
+    "bundle_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-replication-bundle-0.5"
+    }
+  },
+  "additionalProperties": true
+}

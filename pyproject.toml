@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mmrf-stable"
+version = "1.0.0"
+description = "MMRF Stable Research Infrastructure"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.24",
+  "cryptography>=41"
+]
+
+[project.scripts]
+mmrf = "mmrf_stable.runtime:main"
+
+[tool.setuptools]
+packages = ["mmrf_stable"]

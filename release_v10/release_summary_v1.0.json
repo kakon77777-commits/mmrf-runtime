@@ -1,0 +1,65 @@
+{
+  "schema": "mmrf-release-summary-1.0",
+  "release_id": "MMRF-1.0.0",
+  "version": "1.0.0",
+  "status": "STABLE",
+  "stable_manifest_sha256": "a5caea22a57efaac915c00dd92c655b1126e0b6d9b2b93790e48bc167733e0d1",
+  "signed_release_manifest_sha256": "38ab8807354abc34ade3e88d1c95c31693a0adbe8b2d659cbc68a46e9835f542",
+  "release_signing_public_key_sha256": "8adcb88d583d25da9a5f74d2d7808d17bf857220f6f331f1c9f5f143d097b994",
+  "dataset": {
+    "limit_exclusive": 2000000,
+    "prime_count": 148933,
+    "shard_count": 20,
+    "columns": [
+      "prime",
+      "ordinal",
+      "bit_length",
+      "decimal_digits",
+      "previous_gap",
+      "residue_6",
+      "residue_30",
+      "residue_210",
+      "family_flags",
+      "wheel30_class"
+    ]
+  },
+  "conformance": {
+    "checks": 47,
+    "passed": true
+  },
+  "timings": {
+    "stable_manifest_and_20_shards": {
+      "median_ms": 1.012221,
+      "p90_ms": 1.094112
+    },
+    "v08_density_query": {
+      "median_ms": 1.319638,
+      "p90_ms": 2.370036
+    },
+    "signed_release_verification": {
+      "median_ms": 3.310089,
+      "p90_ms": 3.514002
+    },
+    "public_install": {
+      "elapsed_ms": 7.221681
+    }
+  },
+  "evidence_checksums": {
+    "3m_v10/mlf/shard_000000_af6aaa02e680aa5c.npz": "12cab77856d9615727878c514ac4c381282178a1809e89024600e3687d7e881f",
+    "3m_v10/mlf/stable-dataset-citation.json": "25e668d69ac38ed390dd97caf8c6c9f82efe986277428a7d26165dc9ba4fe5d2",
+    "3m_v10/mlf/stable-dataset-manifest.json": "da505c067f7fe9543a61f515c4e016cd2b7479d81a02e9a3dcf20501a9069f22",
+    "3m_v10/mmlc/promotion-receipt.json": "8d71b346a34be337c5efeb8a4d0fe49eaf7640d970bdca94402bc63deba7ef1f",
+    "3m_v10/mmlc/provenance-graph.json": "0420881a7ca7c24710829aa8f1ec6f2ed6457ee270815c4124a732628943fac6",
+    "3m_v10/mmlc/signed-release-manifest.json": "bdf820ccac6733e4f0b3faf450267f8c32b323c45a6175eef95b915ccfdcf5f3",
+    "3m_v10/mmlc/stable-conformance-events.jsonl": "650ecbd47443e552b46e5ae690df913a231888e6720fea7e9f82e264761a3ae5",
+    "3m_v10/mmr/stable-conformance-results.json": "e35c00851b0e994b0cf6c7d798cbceebdaab24a96b1355f6c21bb41d05067f00",
+    "3m_v10/mmr/stable-experiment-report.md": "cd8f84ec7310c6527de6a67deb82b2f1a26af812750164cde519c4c9c616a195",
+    "3m_v10/mmr/timings.json": "fc765163ac7cd345d689b5f9a1f824a8711182441005f3163bccf5765a5898ea",
+    "TEST_RESULTS_V10.md": "e4c7356d2fb9a8983aeffbf6a6296a1d867ed0204b3a85f6b13ca8c1a858721a",
+    "results_v10/MMRF_v1.0_Stable_Research_Infrastructure實驗報告.md": "cd8f84ec7310c6527de6a67deb82b2f1a26af812750164cde519c4c9c616a195",
+    "results_v10/stable_conformance_results.json": "e35c00851b0e994b0cf6c7d798cbceebdaab24a96b1355f6c21bb41d05067f00"
+  },
+  "private_keys_in_release": false,
+  "controlled_datasets_in_release": false,
+  "default_profile": "public-research"
+}

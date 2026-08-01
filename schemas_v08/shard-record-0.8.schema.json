@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Columnar Shard Record 0.8",
+  "type": "object",
+  "required": [
+    "shard_index",
+    "cid",
+    "range_start",
+    "range_end_exclusive",
+    "row_count",
+    "file_sha256",
+    "content_sha256"
+  ],
+  "properties": {
+    "cid": {
+      "type": "string",
+      "pattern": "^mmrf-shard:[0-9a-f]{64}$"
+    },
+    "row_count": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Node Network State 0.7",
+  "type": "object",
+  "required": [
+    "node_id",
+    "status",
+    "policy_version",
+    "policy_snapshot_sha256",
+    "attestation"
+  ],
+  "properties": {
+    "status": {
+      "enum": [
+        "ACTIVE",
+        "REVOKED",
+        "QUARANTINED",
+        "UNREGISTERED",
+        "WAITING_FOR_POLICY"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

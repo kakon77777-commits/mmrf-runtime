@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Witness Signature 0.6",
+  "type": "object",
+  "required": [
+    "accepted",
+    "witness_id",
+    "sth_sha256",
+    "signature_ed25519"
+  ],
+  "properties": {
+    "accepted": {
+      "const": true
+    }
+  },
+  "additionalProperties": true
+}

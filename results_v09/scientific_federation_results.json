@@ -1,0 +1,580 @@
+{
+  "version": "0.9.0",
+  "federation": {
+    "node_count": 3,
+    "expected_shards": 20,
+    "catalog_ingest_ms": {
+      "node_a_v1": 1.245597,
+      "node_b_v1": 1.244416,
+      "node_c_v1": 1.030518
+    },
+    "coverage_before_repair": {
+      "valid": false,
+      "minimum_replication": 3,
+      "expected_shard_count": 20,
+      "node_count": 3,
+      "replication": {
+        "mmrf-shard:47ad909db5b0a58fc737c8ec672219a5469182296a6c4795028a54aa9f6b9588": 3,
+        "mmrf-shard:57b2d6314d47b8afaa636ca6801112f868db0ce9bec431c458c1593e29572970": 2,
+        "mmrf-shard:0cb59639b506522e30a5f9361a6935d17d6f62c3aa5a5b709ad9e1ec3093ab90": 3,
+        "mmrf-shard:201b4d7f9f9edd1af15f55e00758476b1623074beaed2e8783a3066aebcbd25e": 2,
+        "mmrf-shard:f9acd115fa2f0b0b48c7b42bb5d0d5b53e298e749b43cdd0f79004fd19bc4ed9": 3,
+        "mmrf-shard:f0a3f49a19bae929068c1714f62a41bed7ca27bfc93ee113686814a0688fdb33": 2,
+        "mmrf-shard:086b19369969d2940b59988e414c256969da6a2bfc6ce201e50a1680545ba8c2": 3,
+        "mmrf-shard:84d35f026a784ff09866889070676021c53e7538502824f0f5e2d19867a7e117": 2,
+        "mmrf-shard:def39fc9e41dbd44578a2ee290985abc791e6ca3ea15bbee2c8c88b3fdd7f24d": 3,
+        "mmrf-shard:e1bedda662025aed143498648682d85db7652cdb7d1b22ce99372e3d15630f46": 2,
+        "mmrf-shard:a7cefbf205fa9cd4be6b82098f0741d9f809968b83bbb90d12fa0cac9960e520": 3,
+        "mmrf-shard:8344cc9015e624c2b498e4b6c8a65b5d8e70827ade584104d40f0c92491ba282": 2,
+        "mmrf-shard:87dacb4178a97449d81c38f51b72e6edc79a54eec426a3a307abfb90ff5623d1": 3,
+        "mmrf-shard:7137ec15586da75e9d27ff87da268b13882ce3d0d9e6e931d4bb87807eb76d67": 2,
+        "mmrf-shard:2f57bd4449551b5e2e71b28f35e7b935eeb28ebf3fce2f67d88f7fda4d59e8dd": 3,
+        "mmrf-shard:77fa2e50bbbafcadd325b07fe8a1f1cce37b376ea3f1ada97b22a94a48a9d6b5": 2,
+        "mmrf-shard:c4d716e6bb78a875e836440b7fbd187c176c98c98f37f27234cab2d4149af4be": 3,
+        "mmrf-shard:bcf23ca89b76a6318128a03b983a3eec4e8638b62a8971edf12ce82d663a6707": 2,
+        "mmrf-shard:ad22371f29837f14eddcb70f212b854ed1d24a5e828c7f7113e4b2d5e4f17fcf": 3,
+        "mmrf-shard:b71fa6e1ca8323620dc11bd3b5ca94aa14965769b647f0fd7278ac40a34d75d4": 2
+      },
+      "under_replicated": [
+        {
+          "cid": "mmrf-shard:57b2d6314d47b8afaa636ca6801112f868db0ce9bec431c458c1593e29572970",
+          "shard_index": 1,
+          "replicas": 2,
+          "holders": [
+            "node_a",
+            "node_b"
+          ]
+        },
+        {
+          "cid": "mmrf-shard:201b4d7f9f9edd1af15f55e00758476b1623074beaed2e8783a3066aebcbd25e",
+          "shard_index": 3,
+          "replicas": 2,
+          "holders": [
+            "node_a",
+            "node_b"
+          ]
+        },
+        {
+          "cid": "mmrf-shard:f0a3f49a19bae929068c1714f62a41bed7ca27bfc93ee113686814a0688fdb33",
+          "shard_index": 5,
+          "replicas": 2,
+          "holders": [
+            "node_a",
+            "node_b"
+          ]
+        },
+        {
+          "cid": "mmrf-shard:84d35f026a784ff09866889070676021c53e7538502824f0f5e2d19867a7e117",
+          "shard_index": 7,
+          "replicas": 2,
+          "holders": [
+            "node_a",
+            "node_b"
+          ]
+        },
+        {
+          "cid": "mmrf-shard:e1bedda662025aed143498648682d85db7652cdb7d1b22ce99372e3d15630f46",
+          "shard_index": 9,
+          "replicas": 2,
+          "holders": [
+            "node_a",
+            "node_b"
+          ]
+        },
+        {
+          "cid": "mmrf-shard:8344cc9015e624c2b498e4b6c8a65b5d8e70827ade584104d40f0c92491ba282",
+          "shard_index": 11,
+          "replicas": 2,
+          "holders": [
+            "node_a",
+            "node_b"
+          ]
+        },
+        {
+          "cid": "mmrf-shard:7137ec15586da75e9d27ff87da268b13882ce3d0d9e6e931d4bb87807eb76d67",
+          "shard_index": 13,
+          "replicas": 2,
+          "holders": [
+            "node_a",
+            "node_b"
+          ]
+        },
+        {
+          "cid": "mmrf-shard:77fa2e50bbbafcadd325b07fe8a1f1cce37b376ea3f1ada97b22a94a48a9d6b5",
+          "shard_index": 15,
+          "replicas": 2,
+          "holders": [
+            "node_a",
+            "node_b"
+          ]
+        },
+        {
+          "cid": "mmrf-shard:bcf23ca89b76a6318128a03b983a3eec4e8638b62a8971edf12ce82d663a6707",
+          "shard_index": 17,
+          "replicas": 2,
+          "holders": [
+            "node_a",
+            "node_b"
+          ]
+        },
+        {
+          "cid": "mmrf-shard:b71fa6e1ca8323620dc11bd3b5ca94aa14965769b647f0fd7278ac40a34d75d4",
+          "shard_index": 19,
+          "replicas": 2,
+          "holders": [
+            "node_a",
+            "node_b"
+          ]
+        }
+      ],
+      "conflicts": [],
+      "manifest_mismatch_nodes": []
+    },
+    "repair_ms": 2.564674,
+    "coverage_after_repair": {
+      "valid": true,
+      "minimum_replication": 3,
+      "expected_shard_count": 20,
+      "node_count": 3,
+      "replication": {
+        "mmrf-shard:47ad909db5b0a58fc737c8ec672219a5469182296a6c4795028a54aa9f6b9588": 3,
+        "mmrf-shard:57b2d6314d47b8afaa636ca6801112f868db0ce9bec431c458c1593e29572970": 3,
+        "mmrf-shard:0cb59639b506522e30a5f9361a6935d17d6f62c3aa5a5b709ad9e1ec3093ab90": 3,
+        "mmrf-shard:201b4d7f9f9edd1af15f55e00758476b1623074beaed2e8783a3066aebcbd25e": 3,
+        "mmrf-shard:f9acd115fa2f0b0b48c7b42bb5d0d5b53e298e749b43cdd0f79004fd19bc4ed9": 3,
+        "mmrf-shard:f0a3f49a19bae929068c1714f62a41bed7ca27bfc93ee113686814a0688fdb33": 3,
+        "mmrf-shard:086b19369969d2940b59988e414c256969da6a2bfc6ce201e50a1680545ba8c2": 3,
+        "mmrf-shard:84d35f026a784ff09866889070676021c53e7538502824f0f5e2d19867a7e117": 3,
+        "mmrf-shard:def39fc9e41dbd44578a2ee290985abc791e6ca3ea15bbee2c8c88b3fdd7f24d": 3,
+        "mmrf-shard:e1bedda662025aed143498648682d85db7652cdb7d1b22ce99372e3d15630f46": 3,
+        "mmrf-shard:a7cefbf205fa9cd4be6b82098f0741d9f809968b83bbb90d12fa0cac9960e520": 3,
+        "mmrf-shard:8344cc9015e624c2b498e4b6c8a65b5d8e70827ade584104d40f0c92491ba282": 3,
+        "mmrf-shard:87dacb4178a97449d81c38f51b72e6edc79a54eec426a3a307abfb90ff5623d1": 3,
+        "mmrf-shard:7137ec15586da75e9d27ff87da268b13882ce3d0d9e6e931d4bb87807eb76d67": 3,
+        "mmrf-shard:2f57bd4449551b5e2e71b28f35e7b935eeb28ebf3fce2f67d88f7fda4d59e8dd": 3,
+        "mmrf-shard:77fa2e50bbbafcadd325b07fe8a1f1cce37b376ea3f1ada97b22a94a48a9d6b5": 3,
+        "mmrf-shard:c4d716e6bb78a875e836440b7fbd187c176c98c98f37f27234cab2d4149af4be": 3,
+        "mmrf-shard:bcf23ca89b76a6318128a03b983a3eec4e8638b62a8971edf12ce82d663a6707": 3,
+        "mmrf-shard:ad22371f29837f14eddcb70f212b854ed1d24a5e828c7f7113e4b2d5e4f17fcf": 3,
+        "mmrf-shard:b71fa6e1ca8323620dc11bd3b5ca94aa14965769b647f0fd7278ac40a34d75d4": 3
+      },
+      "under_replicated": [],
+      "conflicts": [],
+      "manifest_mismatch_nodes": []
+    },
+    "negative_controls": {
+      "tampered_catalog": {
+        "accepted": false,
+        "reason": "signature_or_structure_invalid:InvalidSignature"
+      },
+      "stale_catalog": {
+        "accepted": false,
+        "reason": "stale_catalog_version"
+      },
+      "split_catalog": {
+        "accepted": false,
+        "reason": "same_version_split_catalog"
+      },
+      "version_gap": {
+        "accepted": false,
+        "reason": "catalog_version_gap"
+      },
+      "hash_conflict_count": 1
+    }
+  },
+  "migration": {
+    "profile": "MMRF-SCHEMA-0.8-TO-0.9",
+    "source_manifest_sha256": "85a884be5c88359357852619ffe9d46e5a315db16940815840b456d9621f9c17",
+    "candidate_manifest_sha256": "73015c5329ae71900ef3f4aca7f35152f3d96a435e65e3bddbd1ae513d597420",
+    "shard_count": 20,
+    "migration_ms": 244.62839,
+    "median_shard_ms": 11.6969135,
+    "p90_shard_ms": 13.75492,
+    "verification": {
+      "valid": true,
+      "checks": {
+        "schema_ok": true,
+        "columns_ok": true,
+        "safety_ok": true,
+        "manifest_hash_ok": true
+      },
+      "shards": [
+        {
+          "shard_index": 0,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        },
+        {
+          "shard_index": 1,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        },
+        {
+          "shard_index": 2,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        },
+        {
+          "shard_index": 3,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        },
+        {
+          "shard_index": 4,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        },
+        {
+          "shard_index": 5,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        },
+        {
+          "shard_index": 6,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        },
+        {
+          "shard_index": 7,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        },
+        {
+          "shard_index": 8,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        },
+        {
+          "shard_index": 9,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        },
+        {
+          "shard_index": 10,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        },
+        {
+          "shard_index": 11,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        },
+        {
+          "shard_index": 12,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        },
+        {
+          "shard_index": 13,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        },
+        {
+          "shard_index": 14,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        },
+        {
+          "shard_index": 15,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        },
+        {
+          "shard_index": 16,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        },
+        {
+          "shard_index": 17,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        },
+        {
+          "shard_index": 18,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        },
+        {
+          "shard_index": 19,
+          "valid": true,
+          "checks": {
+            "content_hash_ok": true,
+            "cid_ok": true,
+            "row_count_ok": true,
+            "wheel_class_valid": true
+          },
+          "reason": null
+        }
+      ]
+    },
+    "logical_replay_reproducible": true,
+    "added_column": "wheel30_class"
+  },
+  "governance": {
+    "proposal": {
+      "accepted": true,
+      "state": "UNDER_REVIEW",
+      "proposal_id": "proposal:mmrf-schema-v09"
+    },
+    "safety_gate": {
+      "passed": true,
+      "unsafe_fields": [],
+      "classification": "L0_PUBLIC_MATH"
+    },
+    "one_review_promotion": {
+      "promoted": false,
+      "reason": "insufficient_approvals"
+    },
+    "promotion": {
+      "promoted": true,
+      "receipt": {
+        "schema": "mmrf-dataset-promotion-receipt-0.9",
+        "promotion_id": "promotion:d382373c-b8c2-4ea9-9f6e-cb8b2762ff5f",
+        "proposal_id": "proposal:mmrf-schema-v09",
+        "proposal_sha256": "2bb5d20ee32708de87b0462fb48173c90caf80c1024bcdf012229c4dc2ca2c6d",
+        "candidate_manifest_sha256": "73015c5329ae71900ef3f4aca7f35152f3d96a435e65e3bddbd1ae513d597420",
+        "approval_threshold": 2,
+        "approval_count": 2,
+        "reviewers": [
+          "reviewer_math",
+          "reviewer_security"
+        ],
+        "promoted_at": "2026-07-29T13:59:44.009729+00:00",
+        "receipt_sha256": "6ad7c85305f45cef095f72eb55ae9f097d9a70388615e5f609fbb83f024c0658"
+      }
+    },
+    "duplicate_reviewer": {
+      "accepted": false,
+      "reason": "duplicate_reviewer"
+    },
+    "unsafe_proposal": {
+      "accepted": false,
+      "reason": "safety_gate_failed",
+      "gate": {
+        "passed": false,
+        "unsafe_fields": [
+          "source_factor_relations"
+        ],
+        "classification": "L0_PUBLIC_MATH"
+      }
+    },
+    "rejected_promotion": {
+      "promoted": false,
+      "reason": "review_rejection_present"
+    },
+    "tampered_review": {
+      "accepted": false,
+      "reason": "signature_or_structure_invalid:InvalidSignature"
+    }
+  },
+  "provenance": {
+    "graph_sha256": "ffb6dd8d5f7e5e54a559d38a09e1262933e5898f7151627174836624448fd238",
+    "node_count": 8,
+    "edge_count": 8,
+    "verification": {
+      "valid": true,
+      "checks": {
+        "hash_ok": true,
+        "edges_valid": true,
+        "dag_valid": true,
+        "declared_dag_matches": true
+      },
+      "reason": null
+    },
+    "cycle_verification": {
+      "valid": false,
+      "checks": {
+        "hash_ok": true,
+        "edges_valid": true,
+        "dag_valid": false,
+        "declared_dag_matches": true
+      },
+      "reason": "provenance_invalid"
+    }
+  },
+  "citation": {
+    "citation_id": "MMRF-DATASET-73015C5329AE7190",
+    "citation_sha256": "c8b87bbc7a1dde104a202d613c275650be7caa482e9f3d6ad3ca93a3f3e83146",
+    "verification": {
+      "valid": true,
+      "checks": {
+        "citation_hash_ok": true,
+        "manifest_binding_ok": true,
+        "promotion_binding_ok": true,
+        "provenance_binding_ok": true
+      },
+      "reason": null
+    },
+    "tampered_verification": {
+      "valid": false,
+      "checks": {
+        "citation_hash_ok": false,
+        "manifest_binding_ok": false,
+        "promotion_binding_ok": true,
+        "provenance_binding_ok": true
+      },
+      "reason": "citation_binding_invalid"
+    }
+  },
+  "rc_conformance": {
+    "passed": true,
+    "check_count": 26,
+    "checks": {
+      "catalog_node_signatures": true,
+      "catalog_version_chain": true,
+      "catalog_split_view_rejected": true,
+      "catalog_stale_rejected": true,
+      "catalog_gap_rejected": true,
+      "catalog_tamper_rejected": true,
+      "hash_conflict_detected": true,
+      "replication_shortfall_detected": true,
+      "replication_repair_completed": true,
+      "migration_all_shards_valid": true,
+      "migration_logical_replay": true,
+      "proposal_signature_and_safety": true,
+      "one_review_insufficient": true,
+      "two_review_promotion": true,
+      "duplicate_reviewer_rejected": true,
+      "unsafe_proposal_rejected": true,
+      "review_rejection_blocks_promotion": true,
+      "tampered_review_rejected": true,
+      "provenance_dag_valid": true,
+      "provenance_cycle_rejected": true,
+      "citation_bindings_valid": true,
+      "tampered_citation_rejected": true,
+      "source_factor_relations_disabled": true,
+      "rsa_target_endpoint_disabled": true,
+      "factor_candidate_endpoint_disabled": true,
+      "range_narrowing_endpoint_disabled": true
+    }
+  },
+  "safety": {
+    "classification": "L0_PUBLIC_MATH",
+    "source_factor_relations": false,
+    "rsa_target_endpoint": false,
+    "factor_candidate_endpoint": false,
+    "range_narrowing_endpoint": false,
+    "exact_prime_list_endpoint": false,
+    "raw_factor_export": false
+  },
+  "boundaries": {
+    "network": "Federation catalog is evaluated over signed catalog documents and local replica directories; v0.7 remains the real mTLS transport trial.",
+    "migration": "Logical CIDs are deterministic. NPZ transport file hashes can differ across independent rewrites because the ZIP container is not the logical content identity.",
+    "governance": "The prototype uses local Ed25519 reviewer keys. Production requires organizational identity, role separation and HSM.",
+    "cryptography": "Only L0 public mathematics is eligible for promotion. Source-factor relations and cryptanalytic endpoints remain forbidden."
+  }
+}

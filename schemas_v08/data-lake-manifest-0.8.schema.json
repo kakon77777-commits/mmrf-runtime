@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Data Lake Manifest 0.8",
+  "type": "object",
+  "required": [
+    "schema",
+    "dataset_id",
+    "generation",
+    "limit_exclusive",
+    "shard_size",
+    "shard_count",
+    "prime_count",
+    "columnar_format",
+    "column_order",
+    "previous_manifest_sha256",
+    "shards",
+    "safety",
+    "manifest_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-data-lake-manifest-0.8"
+    },
+    "columnar_format": {
+      "const": "NPZ_COMPRESSED_COLUMNS"
+    },
+    "generation": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "shards": {
+      "type": "array"
+    },
+    "safety": {
+      "type": "object",
+      "properties": {
+        "source_factor_relations": {
+          "const": false
+        },
+        "rsa_target_endpoint": {
+          "const": false
+        },
+        "factor_candidate_endpoint": {
+          "const": false
+        },
+        "exact_prime_list_endpoint": {
+          "const": false
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

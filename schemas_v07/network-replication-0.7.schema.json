@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Network Replication 0.7",
+  "type": "object",
+  "required": [
+    "schema",
+    "message_id",
+    "source_node_id",
+    "recipient_node_ids",
+    "encrypted_payload",
+    "ciphertext",
+    "ciphertext_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-network-replication-0.7"
+    },
+    "encrypted_payload": {
+      "const": true
+    }
+  },
+  "additionalProperties": false
+}

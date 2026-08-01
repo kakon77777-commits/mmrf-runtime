@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Controlled Install Authorization 1.0",
+  "type": "object",
+  "required": [
+    "schema",
+    "allow_controlled_components",
+    "approval_reference",
+    "approved_profiles",
+    "issued_at",
+    "expires_at"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-controlled-install-authorization-1.0"
+    },
+    "allow_controlled_components": {
+      "const": true
+    },
+    "approved_profiles": {
+      "type": "array",
+      "contains": {
+        "const": "controlled-research"
+      }
+    }
+  },
+  "additionalProperties": true
+}

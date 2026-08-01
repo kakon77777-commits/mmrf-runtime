@@ -1,0 +1,37 @@
+# MMRF v0.9 Test Results
+
+- Smoke test: PASS
+- RC conformance checks: 26
+- RC conformance result: PASS
+- catalog_node_signatures: PASS
+- catalog_version_chain: PASS
+- catalog_split_view_rejected: PASS
+- catalog_stale_rejected: PASS
+- catalog_gap_rejected: PASS
+- catalog_tamper_rejected: PASS
+- hash_conflict_detected: PASS
+- replication_shortfall_detected: PASS
+- replication_repair_completed: PASS
+- migration_all_shards_valid: PASS
+- migration_logical_replay: PASS
+- proposal_signature_and_safety: PASS
+- one_review_insufficient: PASS
+- two_review_promotion: PASS
+- duplicate_reviewer_rejected: PASS
+- unsafe_proposal_rejected: PASS
+- review_rejection_blocks_promotion: PASS
+- tampered_review_rejected: PASS
+- provenance_dag_valid: PASS
+- provenance_cycle_rejected: PASS
+- citation_bindings_valid: PASS
+- tampered_citation_rejected: PASS
+- source_factor_relations_disabled: PASS
+- rsa_target_endpoint_disabled: PASS
+- factor_candidate_endpoint_disabled: PASS
+- range_narrowing_endpoint_disabled: PASS
+- Under-replicated shards before repair: 10
+- Under-replicated shards after repair: 0
+- Migrated shards: 20
+- Migration logical replay: PASS
+- Promotion threshold: 2
+- Private keys in release ZIP: NO

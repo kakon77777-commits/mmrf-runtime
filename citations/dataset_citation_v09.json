@@ -1,0 +1,14 @@
+{
+  "schema": "mmrf-dataset-citation-0.9",
+  "citation_id": "MMRF-DATASET-73015C5329AE7190",
+  "title": "MMRF Public Prime Lake Schema 0.9",
+  "publisher": "EveMissLab Technology Co., Ltd.",
+  "dataset_id": "mmrf-public-prime-lake",
+  "schema_version": "0.9",
+  "manifest_sha256": "73015c5329ae71900ef3f4aca7f35152f3d96a435e65e3bddbd1ae513d597420",
+  "promotion_receipt_sha256": "6ad7c85305f45cef095f72eb55ae9f097d9a70388615e5f609fbb83f024c0658",
+  "provenance_graph_sha256": "ffb6dd8d5f7e5e54a559d38a09e1262933e5898f7151627174836624448fd238",
+  "issued_at": "2026-07-29T13:59:44.023374+00:00",
+  "preferred_citation": "EveMissLab Technology Co., Ltd.. MMRF Public Prime Lake Schema 0.9. MMRF dataset MMRF-DATASET-73015C5329AE7190; manifest 73015c5329ae71900ef3f4aca7f35152f3d96a435e65e3bddbd1ae513d597420.",
+  "citation_sha256": "c8b87bbc7a1dde104a202d613c275650be7caa482e9f3d6ad3ca93a3f3e83146"
+}

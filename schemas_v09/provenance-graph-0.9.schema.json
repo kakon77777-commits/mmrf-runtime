@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Provenance Graph 0.9",
+  "type": "object",
+  "required": [
+    "schema",
+    "nodes",
+    "edges",
+    "graph_sha256",
+    "dag_valid"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-provenance-graph-0.9"
+    },
+    "dag_valid": {
+      "const": true
+    }
+  },
+  "additionalProperties": true
+}

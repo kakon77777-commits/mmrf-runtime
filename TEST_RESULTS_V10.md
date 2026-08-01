@@ -1,0 +1,69 @@
+# MMRF v1.0 Test Results
+
+- Release ID: MMRF-1.0.0
+- Smoke test: PASS
+- Stable conformance checks: 47
+- Stable conformance result: PASS
+- Stable manifest SHA-256: a5caea22a57efaac915c00dd92c655b1126e0b6d9b2b93790e48bc167733e0d1
+- Candidate manifest SHA-256: 73015c5329ae71900ef3f4aca7f35152f3d96a435e65e3bddbd1ae513d597420
+- Stable prime count: 148,933
+- Stable shard count: 20
+- Signed release verification: PASS
+- Public installation: PASS
+- Controlled installation without authorization: BLOCKED
+- Controlled installation with valid short-lived authorization: PASS
+- Expired authorization: BLOCKED
+- v0.8 query compatibility: PASS
+- v0.9 migration compatibility: PASS
+- Stable shard tamper detection: PASS
+- Release payload tamper detection: PASS
+- Installation tamper detection: PASS
+- Doctor report: PASS
+- Private material in source release: NO
+- stable_manifest_valid: PASS
+- all_20_stable_shards_valid: PASS
+- stable_frozen_semantics_exact: PASS
+- v08_query_plane_compatible: PASS
+- v09_migrated_manifest_compatible: PASS
+- v09_provenance_compatible: PASS
+- v09_citation_compatible: PASS
+- stable_candidate_binding: PASS
+- stable_promotion_binding: PASS
+- stable_provenance_binding: PASS
+- stable_citation_binding: PASS
+- v08_requires_migration_and_governance: PASS
+- v09_eligible_with_bindings: PASS
+- v10_verify_only: PASS
+- signed_release_valid: PASS
+- public_install_valid: PASS
+- public_install_profile: PASS
+- public_install_excludes_vault: PASS
+- public_install_excludes_network: PASS
+- public_install_has_stable_data: PASS
+- installation_tamper_detected: PASS
+- controlled_install_requires_authorization: PASS
+- controlled_authorization_valid: PASS
+- controlled_install_valid: PASS
+- controlled_install_has_vault: PASS
+- controlled_install_has_network: PASS
+- controlled_install_records_auth_hash: PASS
+- expired_controlled_authorization_rejected: PASS
+- stable_safety_tamper_rejected: PASS
+- stable_cid_semantics_tamper_rejected: PASS
+- duplicate_stable_reviewers_rejected: PASS
+- stable_manifest_hash_tamper_rejected: PASS
+- stable_shard_tamper_detected: PASS
+- release_payload_tamper_detected: PASS
+- doctor_valid: PASS
+- doctor_no_private_material: PASS
+- doctor_numpy_available: PASS
+- doctor_cryptography_available: PASS
+- source_factor_relations_disabled: PASS
+- rsa_target_endpoint_disabled: PASS
+- factor_candidate_endpoint_disabled: PASS
+- range_narrowing_endpoint_disabled: PASS
+- exact_prime_list_endpoint_disabled: PASS
+- raw_factor_export_disabled: PASS
+- stable_prime_count_148933: PASS
+- stable_shard_count_20: PASS
+- stable_limit_2000000: PASS

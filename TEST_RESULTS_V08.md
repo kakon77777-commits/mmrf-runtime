@@ -1,0 +1,33 @@
+# MMRF v0.8 Test Results
+
+- Smoke test: PASS
+- Generation 1 prime count 78,498: PASS
+- Generation 2 prime count 148,933: PASS
+- Total immutable shards: 20
+- Prior generation shards unchanged: PASS
+- Manifest chain verification: PASS
+- All shard CIDs and content hashes: PASS
+- Cross-generation previous gap: PASS
+- Density query uses index only: PASS
+- Family query uses index only: PASS
+- Gap query loads only previous_gap: PASS
+- Mod 30 query loads only residue_30: PASS
+- Workflow replay reproducible: PASS
+- Primary integrity sample: PASS
+- Mirror integrity sample: PASS
+- Mirror byte tamper detected: PASS
+- Restored mirror valid: PASS
+- Manifest tamper detected: PASS
+- Query audit verification: PASS
+- Tampered query audit rejected: PASS
+- RSA target request: DENIED
+- Factor candidate operation: DENIED
+- Exact prime-list request: DENIED
+- Target integer request: DENIED
+- Excessive shard request: DENIED
+- Arbitrary modulus request: DENIED
+- Arbitrary quantile request: DENIED
+- PyArrow/Parquet runtime available: NO
+- Implemented columnar backend: NPZ_COMPRESSED_COLUMNS
+- Source-factor relations in lake: NO
+- Private material in release ZIP: NO

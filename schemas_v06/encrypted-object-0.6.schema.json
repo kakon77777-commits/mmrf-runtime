@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Encrypted Object 0.6",
+  "type": "object",
+  "required": [
+    "schema",
+    "object_id",
+    "classification",
+    "aad_profile",
+    "ciphertext",
+    "ciphertext_sha256",
+    "dek_wraps",
+    "rewrap_generation",
+    "cid",
+    "signer_signature_ed25519"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-encrypted-object-0.6"
+    },
+    "aad_profile": {
+      "const": "MMRF-STABLE-AAD-0.6"
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evemisslab.com/mmrf/schemas/approval-token-0.4.json",
+  "title": "MMRF Approval Token 0.4",
+  "type": "object",
+  "required": [
+    "payload",
+    "signature_ed25519"
+  ],
+  "properties": {
+    "payload": {
+      "type": "object",
+      "required": [
+        "schema",
+        "token_id",
+        "issuer_role",
+        "issuer_id",
+        "requester_id",
+        "subject_type",
+        "subject_id",
+        "dataset_id",
+        "purpose_sha256",
+        "allowed_operations",
+        "not_before",
+        "expires_at",
+        "nonce"
+      ],
+      "properties": {
+        "schema": {
+          "const": "mmrf-approval-token-0.4"
+        },
+        "issuer_role": {
+          "enum": [
+            "data_owner",
+            "security",
+            "founder"
+          ]
+        },
+        "subject_type": {
+          "enum": [
+            "session",
+            "export"
+          ]
+        },
+        "allowed_operations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "signature_ed25519": {
+      "type": "string",
+      "minLength": 32
+    }
+  },
+  "additionalProperties": false
+}

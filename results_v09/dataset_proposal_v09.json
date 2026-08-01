@@ -1,0 +1,26 @@
+{
+  "schema": "mmrf-dataset-proposal-0.9",
+  "proposal_id": "proposal:mmrf-schema-v09",
+  "proposer_id": "dataset_proposer",
+  "base_manifest_sha256": "85a884be5c88359357852619ffe9d46e5a315db16940815840b456d9621f9c17",
+  "candidate_manifest_sha256": "73015c5329ae71900ef3f4aca7f35152f3d96a435e65e3bddbd1ae513d597420",
+  "candidate_schema_version": "0.9",
+  "migration_profile": "MMRF-SCHEMA-0.8-TO-0.9",
+  "purpose": "Add a public derived wheel30_class column while preserving L0-only safety and full shard provenance.",
+  "safety": {
+    "classification": "L0_PUBLIC_MATH",
+    "source_factor_relations": false,
+    "rsa_target_endpoint": false,
+    "factor_candidate_endpoint": false,
+    "range_narrowing_endpoint": false,
+    "exact_prime_list_endpoint": false,
+    "raw_factor_export": false
+  },
+  "provenance_inputs": [
+    "85a884be5c88359357852619ffe9d46e5a315db16940815840b456d9621f9c17",
+    "73015c5329ae71900ef3f4aca7f35152f3d96a435e65e3bddbd1ae513d597420"
+  ],
+  "created_at": "2026-07-29T13:59:44.005980+00:00",
+  "signature_ed25519": "3k8chimCDr_cdShu85-0IaRmRl3MVZ9HlrJwp8UOBO8RkZB8osxOt90xEIdhpAkeDfbhwit-XvrjWtraIAlGAg",
+  "document_sha256": "2bb5d20ee32708de87b0462fb48173c90caf80c1024bcdf012229c4dc2ca2c6d"
+}

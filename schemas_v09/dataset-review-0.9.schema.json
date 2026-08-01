@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Dataset Review 0.9",
+  "type": "object",
+  "required": [
+    "schema",
+    "review_id",
+    "proposal_id",
+    "proposal_sha256",
+    "reviewer_id",
+    "decision",
+    "findings",
+    "signature_ed25519",
+    "document_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-dataset-review-0.9"
+    },
+    "decision": {
+      "enum": [
+        "APPROVE",
+        "REJECT"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

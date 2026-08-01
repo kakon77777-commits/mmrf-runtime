@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Transparency Entry 0.6",
+  "type": "object",
+  "required": [
+    "schema",
+    "entry_id",
+    "sequence",
+    "entry_type",
+    "subject_id",
+    "payload",
+    "created_at"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-transparency-entry-0.6"
+    },
+    "entry_type": {
+      "enum": [
+        "NODE_REGISTER",
+        "NODE_ROTATE",
+        "NODE_REVOKE",
+        "NODE_RECOVER"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "mmrf-dataset-review-0.9",
+  "review_id": "review:46a1992f-f012-432a-b5c7-26828e0f0659",
+  "proposal_id": "proposal:mmrf-schema-v09",
+  "proposal_sha256": "2bb5d20ee32708de87b0462fb48173c90caf80c1024bcdf012229c4dc2ca2c6d",
+  "reviewer_id": "reviewer_math",
+  "decision": "APPROVE",
+  "findings": [
+    "wheel30_class is a deterministic function of residue_30",
+    "logical content CIDs replay identically"
+  ],
+  "created_at": "2026-07-29T13:59:44.007493+00:00",
+  "signature_ed25519": "hAwUYRCa0s1iOBcf-NB7ehYCZoK2bJIn5EJwTDabe25my7ORzwpGxHGCEQd5MhcWc2U6vW_Mu00A26L9daeGBw",
+  "document_sha256": "726e3dfa89eb113915f965d1ef41ad0ddf4fc4cb0210f3afb9359bd395e62ebc"
+}

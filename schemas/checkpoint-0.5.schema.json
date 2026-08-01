@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Vault Checkpoint 0.5",
+  "type": "object",
+  "required": [
+    "schema",
+    "node_id",
+    "checkpoint_sequence",
+    "previous_checkpoint_sha256",
+    "audit_sequence",
+    "audit_root_sha256",
+    "signature_ed25519",
+    "checkpoint_hash_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-vault-checkpoint-0.5"
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evemisslab.com/mmrf/schemas/enclave-result-0.4.json",
+  "title": "MMRF Enclave Result 0.4",
+  "type": "object",
+  "required": [
+    "schema",
+    "result_id",
+    "session_id",
+    "operation",
+    "classification",
+    "exportable",
+    "payload"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-enclave-result-0.4"
+    },
+    "classification": {
+      "const": "L2_CONTROLLED"
+    },
+    "exportable": {
+      "type": "boolean"
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

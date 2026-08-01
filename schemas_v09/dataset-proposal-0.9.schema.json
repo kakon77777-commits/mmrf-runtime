@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Dataset Proposal 0.9",
+  "type": "object",
+  "required": [
+    "schema",
+    "proposal_id",
+    "proposer_id",
+    "base_manifest_sha256",
+    "candidate_manifest_sha256",
+    "candidate_schema_version",
+    "migration_profile",
+    "purpose",
+    "safety",
+    "signature_ed25519",
+    "document_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-dataset-proposal-0.9"
+    }
+  },
+  "additionalProperties": true
+}

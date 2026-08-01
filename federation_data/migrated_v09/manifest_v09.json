@@ -1,0 +1,218 @@
+{
+  "schema": "mmrf-data-lake-manifest-0.9",
+  "dataset_id": "mmrf-public-prime-lake",
+  "schema_version": "0.9",
+  "generation": 2,
+  "limit_exclusive": 2000000,
+  "shard_size": 100000,
+  "shard_count": 20,
+  "prime_count": 148933,
+  "columnar_format": "NPZ_COMPRESSED_COLUMNS",
+  "column_order": [
+    "prime",
+    "ordinal",
+    "bit_length",
+    "decimal_digits",
+    "previous_gap",
+    "residue_6",
+    "residue_30",
+    "residue_210",
+    "family_flags",
+    "wheel30_class"
+  ],
+  "source_manifest_sha256": "85a884be5c88359357852619ffe9d46e5a315db16940815840b456d9621f9c17",
+  "migration_profile": "MMRF-SCHEMA-0.8-TO-0.9",
+  "shards": [
+    {
+      "shard_index": 0,
+      "cid": "mmrf-shard:af6aaa02e680aa5c6091fd71c5b0554c2dd64685d3f4e8c8cc759b4c7bd8dc2b",
+      "source_cid": "mmrf-shard:47ad909db5b0a58fc737c8ec672219a5469182296a6c4795028a54aa9f6b9588",
+      "row_count": 9592,
+      "file_path": "federation_data/migrated_v09/shards/shard_000000_af6aaa02e680aa5c.npz",
+      "file_sha256": "12cab77856d9615727878c514ac4c381282178a1809e89024600e3687d7e881f",
+      "content_sha256": "af6aaa02e680aa5c6091fd71c5b0554c2dd64685d3f4e8c8cc759b4c7bd8dc2b"
+    },
+    {
+      "shard_index": 1,
+      "cid": "mmrf-shard:0d6c0df3d806c2cf06915cbd08585cb343ddfb3165e866919fe3f41ef1439714",
+      "source_cid": "mmrf-shard:57b2d6314d47b8afaa636ca6801112f868db0ce9bec431c458c1593e29572970",
+      "row_count": 8392,
+      "file_path": "federation_data/migrated_v09/shards/shard_000001_0d6c0df3d806c2cf.npz",
+      "file_sha256": "bcf03404abb136bbbb00ebb97e2023a959a9772a687b37e974f2c6e01c7de4bf",
+      "content_sha256": "0d6c0df3d806c2cf06915cbd08585cb343ddfb3165e866919fe3f41ef1439714"
+    },
+    {
+      "shard_index": 2,
+      "cid": "mmrf-shard:a697b455246467b11058afba2c424c400ad4355ae3cacbd8961ede316e6ff432",
+      "source_cid": "mmrf-shard:0cb59639b506522e30a5f9361a6935d17d6f62c3aa5a5b709ad9e1ec3093ab90",
+      "row_count": 8013,
+      "file_path": "federation_data/migrated_v09/shards/shard_000002_a697b455246467b1.npz",
+      "file_sha256": "45c17fd4695bae91574163060909c4c2209b25e4ae83e736d1618fed730a5e40",
+      "content_sha256": "a697b455246467b11058afba2c424c400ad4355ae3cacbd8961ede316e6ff432"
+    },
+    {
+      "shard_index": 3,
+      "cid": "mmrf-shard:91c96cf0af84029664be0b85c0dddb523dd2affa82718e327099cd4d6060284b",
+      "source_cid": "mmrf-shard:201b4d7f9f9edd1af15f55e00758476b1623074beaed2e8783a3066aebcbd25e",
+      "row_count": 7863,
+      "file_path": "federation_data/migrated_v09/shards/shard_000003_91c96cf0af840296.npz",
+      "file_sha256": "78fc99f7784cebefd97ebd4dfeca0e0707fdece296f1c5983ee3a3b905c1febc",
+      "content_sha256": "91c96cf0af84029664be0b85c0dddb523dd2affa82718e327099cd4d6060284b"
+    },
+    {
+      "shard_index": 4,
+      "cid": "mmrf-shard:33eeeed699f76a3860fd209cf7dff004cd99451c26897568149e61cd7c749b91",
+      "source_cid": "mmrf-shard:f9acd115fa2f0b0b48c7b42bb5d0d5b53e298e749b43cdd0f79004fd19bc4ed9",
+      "row_count": 7678,
+      "file_path": "federation_data/migrated_v09/shards/shard_000004_33eeeed699f76a38.npz",
+      "file_sha256": "711bdaafed5c747e3b4b7930881e08eee26db7c8e4c9aeb1ab92a3b6a1dd4652",
+      "content_sha256": "33eeeed699f76a3860fd209cf7dff004cd99451c26897568149e61cd7c749b91"
+    },
+    {
+      "shard_index": 5,
+      "cid": "mmrf-shard:0a79a8c9820894d8119f3d60308c53f0b4c0da424eefc42a41f52624a727147b",
+      "source_cid": "mmrf-shard:f0a3f49a19bae929068c1714f62a41bed7ca27bfc93ee113686814a0688fdb33",
+      "row_count": 7560,
+      "file_path": "federation_data/migrated_v09/shards/shard_000005_0a79a8c9820894d8.npz",
+      "file_sha256": "72cccfe303f509befa11e9499d67de2da97f7234b9247fcc0b7380036499df50",
+      "content_sha256": "0a79a8c9820894d8119f3d60308c53f0b4c0da424eefc42a41f52624a727147b"
+    },
+    {
+      "shard_index": 6,
+      "cid": "mmrf-shard:de281fb6f10fbaa5784aaf0a15633ec6a5ac042637afa25c533b6fb77fff0806",
+      "source_cid": "mmrf-shard:086b19369969d2940b59988e414c256969da6a2bfc6ce201e50a1680545ba8c2",
+      "row_count": 7445,
+      "file_path": "federation_data/migrated_v09/shards/shard_000006_de281fb6f10fbaa5.npz",
+      "file_sha256": "af9a16725adeeb9ae787faf0385add9a3e3ef042a2c5faf285fca6ae43f02041",
+      "content_sha256": "de281fb6f10fbaa5784aaf0a15633ec6a5ac042637afa25c533b6fb77fff0806"
+    },
+    {
+      "shard_index": 7,
+      "cid": "mmrf-shard:2c167c5675602e7d01e72f1c454861ee6e34ea1620800ec42e1f9d47e8d8aa90",
+      "source_cid": "mmrf-shard:84d35f026a784ff09866889070676021c53e7538502824f0f5e2d19867a7e117",
+      "row_count": 7408,
+      "file_path": "federation_data/migrated_v09/shards/shard_000007_2c167c5675602e7d.npz",
+      "file_sha256": "c0e9677b0e473f9033a91e6375efcd5722c8fbb9b38d61739c37cfe9cc0943fe",
+      "content_sha256": "2c167c5675602e7d01e72f1c454861ee6e34ea1620800ec42e1f9d47e8d8aa90"
+    },
+    {
+      "shard_index": 8,
+      "cid": "mmrf-shard:5acad21044dbfac9569c6674e69533463d3d7a0693281b59a63de745f80c7f45",
+      "source_cid": "mmrf-shard:def39fc9e41dbd44578a2ee290985abc791e6ca3ea15bbee2c8c88b3fdd7f24d",
+      "row_count": 7323,
+      "file_path": "federation_data/migrated_v09/shards/shard_000008_5acad21044dbfac9.npz",
+      "file_sha256": "c068cc90e6f933f7ff7e4e8cfdc3c6767a8bf39c45f48960437216805f3d2c5c",
+      "content_sha256": "5acad21044dbfac9569c6674e69533463d3d7a0693281b59a63de745f80c7f45"
+    },
+    {
+      "shard_index": 9,
+      "cid": "mmrf-shard:b92758f326a8f6f1a4e573e3d9f1757ec0ceffa1beb7aa33d6bead8e46bc38cb",
+      "source_cid": "mmrf-shard:e1bedda662025aed143498648682d85db7652cdb7d1b22ce99372e3d15630f46",
+      "row_count": 7224,
+      "file_path": "federation_data/migrated_v09/shards/shard_000009_b92758f326a8f6f1.npz",
+      "file_sha256": "b34e7de807c4fbff8d48ac882f35f85a7e983694330e9804836f431dec468f7a",
+      "content_sha256": "b92758f326a8f6f1a4e573e3d9f1757ec0ceffa1beb7aa33d6bead8e46bc38cb"
+    },
+    {
+      "shard_index": 10,
+      "cid": "mmrf-shard:ed127a6a4d79742881b0a5bf1119ee91f6584f5acc39dbe7287e082a42a63a6b",
+      "source_cid": "mmrf-shard:a7cefbf205fa9cd4be6b82098f0741d9f809968b83bbb90d12fa0cac9960e520",
+      "row_count": 7216,
+      "file_path": "federation_data/migrated_v09/shards/shard_000010_ed127a6a4d797428.npz",
+      "file_sha256": "b043581998b4cc4873ceb47673929d0469e22aebeb41ea8b486cad7908748a72",
+      "content_sha256": "ed127a6a4d79742881b0a5bf1119ee91f6584f5acc39dbe7287e082a42a63a6b"
+    },
+    {
+      "shard_index": 11,
+      "cid": "mmrf-shard:58a9f8aaaa2055f93f6cd6b2dcc4f98886b1677feaa5082e9e80f1beaefdff87",
+      "source_cid": "mmrf-shard:8344cc9015e624c2b498e4b6c8a65b5d8e70827ade584104d40f0c92491ba282",
+      "row_count": 7224,
+      "file_path": "federation_data/migrated_v09/shards/shard_000011_58a9f8aaaa2055f9.npz",
+      "file_sha256": "0404a9838e2ed635442a14aa9e9b3a73d80028641ef19ca28a8bbd94595c23dc",
+      "content_sha256": "58a9f8aaaa2055f93f6cd6b2dcc4f98886b1677feaa5082e9e80f1beaefdff87"
+    },
+    {
+      "shard_index": 12,
+      "cid": "mmrf-shard:f4cdd166f5a24ba047a410126a0835c9a78183d14e1c0bb1b2b60b9a63c78f2d",
+      "source_cid": "mmrf-shard:87dacb4178a97449d81c38f51b72e6edc79a54eec426a3a307abfb90ff5623d1",
+      "row_count": 7083,
+      "file_path": "federation_data/migrated_v09/shards/shard_000012_f4cdd166f5a24ba0.npz",
+      "file_sha256": "4ea4a686b19583161c4817626c507c8f2676dc9881b2cc282409f6279dda0bdf",
+      "content_sha256": "f4cdd166f5a24ba047a410126a0835c9a78183d14e1c0bb1b2b60b9a63c78f2d"
+    },
+    {
+      "shard_index": 13,
+      "cid": "mmrf-shard:1423f655c031ee477eb3b0bf18325182669e2532181e5a3bf702e14079b83652",
+      "source_cid": "mmrf-shard:7137ec15586da75e9d27ff87da268b13882ce3d0d9e6e931d4bb87807eb76d67",
+      "row_count": 7105,
+      "file_path": "federation_data/migrated_v09/shards/shard_000013_1423f655c031ee47.npz",
+      "file_sha256": "9500e9571f4250abaddbcbf02e94cacab6be720d34eaa203bcfb69a544c5cecf",
+      "content_sha256": "1423f655c031ee477eb3b0bf18325182669e2532181e5a3bf702e14079b83652"
+    },
+    {
+      "shard_index": 14,
+      "cid": "mmrf-shard:a14ba077f3e2e3af5da5c2fd8bb0d4ac5cc112e1cad8c3b88b0be8f8fa1f12ae",
+      "source_cid": "mmrf-shard:2f57bd4449551b5e2e71b28f35e7b935eeb28ebf3fce2f67d88f7fda4d59e8dd",
+      "row_count": 7029,
+      "file_path": "federation_data/migrated_v09/shards/shard_000014_a14ba077f3e2e3af.npz",
+      "file_sha256": "f3ecaf8e6a17e247e60c83e491606da2544df2a023da7a91f4f6ccee1ebc2f6d",
+      "content_sha256": "a14ba077f3e2e3af5da5c2fd8bb0d4ac5cc112e1cad8c3b88b0be8f8fa1f12ae"
+    },
+    {
+      "shard_index": 15,
+      "cid": "mmrf-shard:3cf65898a7310d76683d414a5f80c1bc2d078eb8329d3d30107eac9ad685187a",
+      "source_cid": "mmrf-shard:77fa2e50bbbafcadd325b07fe8a1f1cce37b376ea3f1ada97b22a94a48a9d6b5",
+      "row_count": 6972,
+      "file_path": "federation_data/migrated_v09/shards/shard_000015_3cf65898a7310d76.npz",
+      "file_sha256": "8ffeb2508a81fb2bb0b930819afa1ad51aa0c5ef434e1ee0b1cd825028040c51",
+      "content_sha256": "3cf65898a7310d76683d414a5f80c1bc2d078eb8329d3d30107eac9ad685187a"
+    },
+    {
+      "shard_index": 16,
+      "cid": "mmrf-shard:5320323063b91c965c71595f60737f9a4e81b08e36d1d562de4b9250b875f74b",
+      "source_cid": "mmrf-shard:c4d716e6bb78a875e836440b7fbd187c176c98c98f37f27234cab2d4149af4be",
+      "row_count": 7014,
+      "file_path": "federation_data/migrated_v09/shards/shard_000016_5320323063b91c96.npz",
+      "file_sha256": "423ef0a38481dcb88c1f435799c5ad698a77dc8e19a2d223e10152c16d90efea",
+      "content_sha256": "5320323063b91c965c71595f60737f9a4e81b08e36d1d562de4b9250b875f74b"
+    },
+    {
+      "shard_index": 17,
+      "cid": "mmrf-shard:b3fe8dcdd466a75e16e29ecc43a29ae9b77b0c9b38f34382ff11419e6eddc937",
+      "source_cid": "mmrf-shard:bcf23ca89b76a6318128a03b983a3eec4e8638b62a8971edf12ce82d663a6707",
+      "row_count": 6931,
+      "file_path": "federation_data/migrated_v09/shards/shard_000017_b3fe8dcdd466a75e.npz",
+      "file_sha256": "b1d144a5a7720b4bb3f0996f61c9a181be4d1f3f85cf0956fb30cfd5703a4811",
+      "content_sha256": "b3fe8dcdd466a75e16e29ecc43a29ae9b77b0c9b38f34382ff11419e6eddc937"
+    },
+    {
+      "shard_index": 18,
+      "cid": "mmrf-shard:3e2902b4cad3ee07c1b658ad7ef456978a2c5f1332d22653d169ef3a2c5604f2",
+      "source_cid": "mmrf-shard:ad22371f29837f14eddcb70f212b854ed1d24a5e828c7f7113e4b2d5e4f17fcf",
+      "row_count": 6957,
+      "file_path": "federation_data/migrated_v09/shards/shard_000018_3e2902b4cad3ee07.npz",
+      "file_sha256": "dcb9a4ef9d5bf356a6111030e1273a9599898609b80038ef7128103793798e63",
+      "content_sha256": "3e2902b4cad3ee07c1b658ad7ef456978a2c5f1332d22653d169ef3a2c5604f2"
+    },
+    {
+      "shard_index": 19,
+      "cid": "mmrf-shard:76a7acb8ae238a69c08ee36992cd18cadefeb8735b4b433b76d02c874ed987c4",
+      "source_cid": "mmrf-shard:b71fa6e1ca8323620dc11bd3b5ca94aa14965769b647f0fd7278ac40a34d75d4",
+      "row_count": 6904,
+      "file_path": "federation_data/migrated_v09/shards/shard_000019_76a7acb8ae238a69.npz",
+      "file_sha256": "5ca089fc108362afe0941eae88d3cd6eeb6b4118941e5e40dab6aa1d212c5a99",
+      "content_sha256": "76a7acb8ae238a69c08ee36992cd18cadefeb8735b4b433b76d02c874ed987c4"
+    }
+  ],
+  "safety": {
+    "classification": "L0_PUBLIC_MATH",
+    "source_factor_relations": false,
+    "rsa_target_endpoint": false,
+    "factor_candidate_endpoint": false,
+    "range_narrowing_endpoint": false,
+    "exact_prime_list_endpoint": false,
+    "raw_factor_export": false
+  },
+  "created_at": "2026-07-29T13:59:43.728785+00:00",
+  "manifest_sha256": "73015c5329ae71900ef3f4aca7f35152f3d96a435e65e3bddbd1ae513d597420"
+}

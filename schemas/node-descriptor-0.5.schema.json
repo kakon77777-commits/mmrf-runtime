@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Node Descriptor 0.5",
+  "type": "object",
+  "required": [
+    "schema",
+    "node_id",
+    "identity_public_ed25519",
+    "encryption_public_x25519",
+    "accepted_measurements",
+    "descriptor_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-node-descriptor-0.5"
+    }
+  },
+  "additionalProperties": true
+}

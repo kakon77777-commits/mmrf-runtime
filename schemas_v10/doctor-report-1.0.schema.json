@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Doctor Report 1.0",
+  "type": "object",
+  "required": [
+    "schema",
+    "release_id",
+    "python",
+    "dependencies",
+    "stable_manifest",
+    "private_material_markers",
+    "valid",
+    "created_at"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-doctor-report-1.0"
+    },
+    "release_id": {
+      "const": "MMRF-1.0.0"
+    }
+  },
+  "additionalProperties": true
+}

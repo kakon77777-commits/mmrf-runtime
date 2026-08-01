@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Scientific Workflow 0.8",
+  "type": "object",
+  "required": [
+    "schema",
+    "workflow_id",
+    "steps"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-scientific-workflow-0.8"
+    },
+    "workflow_id": {
+      "type": "string"
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "step_id",
+          "query"
+        ]
+      }
+    }
+  },
+  "additionalProperties": true
+}

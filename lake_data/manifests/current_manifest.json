@@ -1,0 +1,233 @@
+{
+  "schema": "mmrf-data-lake-manifest-0.8",
+  "dataset_id": "mmrf-public-prime-lake",
+  "generation": 2,
+  "limit_exclusive": 2000000,
+  "shard_size": 100000,
+  "shard_count": 20,
+  "prime_count": 148933,
+  "columnar_format": "NPZ_COMPRESSED_COLUMNS",
+  "column_order": [
+    "prime",
+    "ordinal",
+    "bit_length",
+    "decimal_digits",
+    "previous_gap",
+    "residue_6",
+    "residue_30",
+    "residue_210",
+    "family_flags"
+  ],
+  "previous_manifest_sha256": "4457920fa9816b81dff3097a6690cbba79296bbc3dc4ccb8d552b334bd705467",
+  "shards": [
+    {
+      "shard_index": 0,
+      "cid": "mmrf-shard:47ad909db5b0a58fc737c8ec672219a5469182296a6c4795028a54aa9f6b9588",
+      "range_start": 0,
+      "range_end_exclusive": 100000,
+      "row_count": 9592,
+      "file_path": "lake_data/primary/shards/shard_000000_47ad909db5b0a58f.npz",
+      "file_sha256": "34effff4a12f06fd29e031f298d3d5845c874007eea360857950d2cdeee2de5c",
+      "content_sha256": "47ad909db5b0a58fc737c8ec672219a5469182296a6c4795028a54aa9f6b9588"
+    },
+    {
+      "shard_index": 1,
+      "cid": "mmrf-shard:57b2d6314d47b8afaa636ca6801112f868db0ce9bec431c458c1593e29572970",
+      "range_start": 100000,
+      "range_end_exclusive": 200000,
+      "row_count": 8392,
+      "file_path": "lake_data/primary/shards/shard_000001_57b2d6314d47b8af.npz",
+      "file_sha256": "268103fc00e3b20ec4fd2038acecd7576d258f066807c915a5b016040dee5719",
+      "content_sha256": "57b2d6314d47b8afaa636ca6801112f868db0ce9bec431c458c1593e29572970"
+    },
+    {
+      "shard_index": 2,
+      "cid": "mmrf-shard:0cb59639b506522e30a5f9361a6935d17d6f62c3aa5a5b709ad9e1ec3093ab90",
+      "range_start": 200000,
+      "range_end_exclusive": 300000,
+      "row_count": 8013,
+      "file_path": "lake_data/primary/shards/shard_000002_0cb59639b506522e.npz",
+      "file_sha256": "4ecdb3194e8a67fcfefda6217aa17cd84dce2fa8a76717d603dfbb6a5d640912",
+      "content_sha256": "0cb59639b506522e30a5f9361a6935d17d6f62c3aa5a5b709ad9e1ec3093ab90"
+    },
+    {
+      "shard_index": 3,
+      "cid": "mmrf-shard:201b4d7f9f9edd1af15f55e00758476b1623074beaed2e8783a3066aebcbd25e",
+      "range_start": 300000,
+      "range_end_exclusive": 400000,
+      "row_count": 7863,
+      "file_path": "lake_data/primary/shards/shard_000003_201b4d7f9f9edd1a.npz",
+      "file_sha256": "787182b0678b26a5f7a481f41aea9ab67e3fcdafbff0932c77ef0cb6ffb8061f",
+      "content_sha256": "201b4d7f9f9edd1af15f55e00758476b1623074beaed2e8783a3066aebcbd25e"
+    },
+    {
+      "shard_index": 4,
+      "cid": "mmrf-shard:f9acd115fa2f0b0b48c7b42bb5d0d5b53e298e749b43cdd0f79004fd19bc4ed9",
+      "range_start": 400000,
+      "range_end_exclusive": 500000,
+      "row_count": 7678,
+      "file_path": "lake_data/primary/shards/shard_000004_f9acd115fa2f0b0b.npz",
+      "file_sha256": "88eca8146410ad4b111215820c3035effa3ec0d0c2b1b7b387187fdbf2921a0f",
+      "content_sha256": "f9acd115fa2f0b0b48c7b42bb5d0d5b53e298e749b43cdd0f79004fd19bc4ed9"
+    },
+    {
+      "shard_index": 5,
+      "cid": "mmrf-shard:f0a3f49a19bae929068c1714f62a41bed7ca27bfc93ee113686814a0688fdb33",
+      "range_start": 500000,
+      "range_end_exclusive": 600000,
+      "row_count": 7560,
+      "file_path": "lake_data/primary/shards/shard_000005_f0a3f49a19bae929.npz",
+      "file_sha256": "b62b1aae23b71232d11e6d2636b0dcd9ad6ce57c979f35a76eaa1206f38c2560",
+      "content_sha256": "f0a3f49a19bae929068c1714f62a41bed7ca27bfc93ee113686814a0688fdb33"
+    },
+    {
+      "shard_index": 6,
+      "cid": "mmrf-shard:086b19369969d2940b59988e414c256969da6a2bfc6ce201e50a1680545ba8c2",
+      "range_start": 600000,
+      "range_end_exclusive": 700000,
+      "row_count": 7445,
+      "file_path": "lake_data/primary/shards/shard_000006_086b19369969d294.npz",
+      "file_sha256": "40081bf83612447e7d0b95dec6904e0fa14d3525249d920ee6d40dd3ed310b1a",
+      "content_sha256": "086b19369969d2940b59988e414c256969da6a2bfc6ce201e50a1680545ba8c2"
+    },
+    {
+      "shard_index": 7,
+      "cid": "mmrf-shard:84d35f026a784ff09866889070676021c53e7538502824f0f5e2d19867a7e117",
+      "range_start": 700000,
+      "range_end_exclusive": 800000,
+      "row_count": 7408,
+      "file_path": "lake_data/primary/shards/shard_000007_84d35f026a784ff0.npz",
+      "file_sha256": "0aeb02c0f27a6a4bed53accc1e730a6f0b4b72a2e89d231fa7d54f25c61ffd3c",
+      "content_sha256": "84d35f026a784ff09866889070676021c53e7538502824f0f5e2d19867a7e117"
+    },
+    {
+      "shard_index": 8,
+      "cid": "mmrf-shard:def39fc9e41dbd44578a2ee290985abc791e6ca3ea15bbee2c8c88b3fdd7f24d",
+      "range_start": 800000,
+      "range_end_exclusive": 900000,
+      "row_count": 7323,
+      "file_path": "lake_data/primary/shards/shard_000008_def39fc9e41dbd44.npz",
+      "file_sha256": "735e10bac5c9f4d0a62318ea010ed4c635a541fb600ae1c023bb86a269531cdf",
+      "content_sha256": "def39fc9e41dbd44578a2ee290985abc791e6ca3ea15bbee2c8c88b3fdd7f24d"
+    },
+    {
+      "shard_index": 9,
+      "cid": "mmrf-shard:e1bedda662025aed143498648682d85db7652cdb7d1b22ce99372e3d15630f46",
+      "range_start": 900000,
+      "range_end_exclusive": 1000000,
+      "row_count": 7224,
+      "file_path": "lake_data/primary/shards/shard_000009_e1bedda662025aed.npz",
+      "file_sha256": "4a916a6540166b45905ee16a67f1d7335093172f7d6150d7ceee4afd47728580",
+      "content_sha256": "e1bedda662025aed143498648682d85db7652cdb7d1b22ce99372e3d15630f46"
+    },
+    {
+      "shard_index": 10,
+      "cid": "mmrf-shard:a7cefbf205fa9cd4be6b82098f0741d9f809968b83bbb90d12fa0cac9960e520",
+      "range_start": 1000000,
+      "range_end_exclusive": 1100000,
+      "row_count": 7216,
+      "file_path": "lake_data/primary/shards/shard_000010_a7cefbf205fa9cd4.npz",
+      "file_sha256": "94f9fc348d6563f682a1898bc4501f105a14ed3a3f44d30f0ba2a39904649659",
+      "content_sha256": "a7cefbf205fa9cd4be6b82098f0741d9f809968b83bbb90d12fa0cac9960e520"
+    },
+    {
+      "shard_index": 11,
+      "cid": "mmrf-shard:8344cc9015e624c2b498e4b6c8a65b5d8e70827ade584104d40f0c92491ba282",
+      "range_start": 1100000,
+      "range_end_exclusive": 1200000,
+      "row_count": 7224,
+      "file_path": "lake_data/primary/shards/shard_000011_8344cc9015e624c2.npz",
+      "file_sha256": "01e264c1681838fa13f1dadc98b83f298a7e8b8d845e147b37bec5de64117471",
+      "content_sha256": "8344cc9015e624c2b498e4b6c8a65b5d8e70827ade584104d40f0c92491ba282"
+    },
+    {
+      "shard_index": 12,
+      "cid": "mmrf-shard:87dacb4178a97449d81c38f51b72e6edc79a54eec426a3a307abfb90ff5623d1",
+      "range_start": 1200000,
+      "range_end_exclusive": 1300000,
+      "row_count": 7083,
+      "file_path": "lake_data/primary/shards/shard_000012_87dacb4178a97449.npz",
+      "file_sha256": "79a8f95424613505c574b9ceb0792853627bc2678f83d84092aec1ef2a46ac19",
+      "content_sha256": "87dacb4178a97449d81c38f51b72e6edc79a54eec426a3a307abfb90ff5623d1"
+    },
+    {
+      "shard_index": 13,
+      "cid": "mmrf-shard:7137ec15586da75e9d27ff87da268b13882ce3d0d9e6e931d4bb87807eb76d67",
+      "range_start": 1300000,
+      "range_end_exclusive": 1400000,
+      "row_count": 7105,
+      "file_path": "lake_data/primary/shards/shard_000013_7137ec15586da75e.npz",
+      "file_sha256": "0c587187ae91710c9fbed0a88599921397cde1e817611feb6fc799cbe1d47185",
+      "content_sha256": "7137ec15586da75e9d27ff87da268b13882ce3d0d9e6e931d4bb87807eb76d67"
+    },
+    {
+      "shard_index": 14,
+      "cid": "mmrf-shard:2f57bd4449551b5e2e71b28f35e7b935eeb28ebf3fce2f67d88f7fda4d59e8dd",
+      "range_start": 1400000,
+      "range_end_exclusive": 1500000,
+      "row_count": 7029,
+      "file_path": "lake_data/primary/shards/shard_000014_2f57bd4449551b5e.npz",
+      "file_sha256": "aaa9d16c94ddd468cae839a09d71101bb6d44e3e055146e76af08e88c6fe0fd4",
+      "content_sha256": "2f57bd4449551b5e2e71b28f35e7b935eeb28ebf3fce2f67d88f7fda4d59e8dd"
+    },
+    {
+      "shard_index": 15,
+      "cid": "mmrf-shard:77fa2e50bbbafcadd325b07fe8a1f1cce37b376ea3f1ada97b22a94a48a9d6b5",
+      "range_start": 1500000,
+      "range_end_exclusive": 1600000,
+      "row_count": 6972,
+      "file_path": "lake_data/primary/shards/shard_000015_77fa2e50bbbafcad.npz",
+      "file_sha256": "492c4e5302aa5da636c27692102462e7e495d9917ea06ade0f38edbf1050098e",
+      "content_sha256": "77fa2e50bbbafcadd325b07fe8a1f1cce37b376ea3f1ada97b22a94a48a9d6b5"
+    },
+    {
+      "shard_index": 16,
+      "cid": "mmrf-shard:c4d716e6bb78a875e836440b7fbd187c176c98c98f37f27234cab2d4149af4be",
+      "range_start": 1600000,
+      "range_end_exclusive": 1700000,
+      "row_count": 7014,
+      "file_path": "lake_data/primary/shards/shard_000016_c4d716e6bb78a875.npz",
+      "file_sha256": "656dc9ad9e46e8680cda209e000d2df2b57937d8352da2fb55b18af207996515",
+      "content_sha256": "c4d716e6bb78a875e836440b7fbd187c176c98c98f37f27234cab2d4149af4be"
+    },
+    {
+      "shard_index": 17,
+      "cid": "mmrf-shard:bcf23ca89b76a6318128a03b983a3eec4e8638b62a8971edf12ce82d663a6707",
+      "range_start": 1700000,
+      "range_end_exclusive": 1800000,
+      "row_count": 6931,
+      "file_path": "lake_data/primary/shards/shard_000017_bcf23ca89b76a631.npz",
+      "file_sha256": "90c774ec9fc144ca22c38ebd6f7688b6bdb4d3a278b79df8352c847da1affb77",
+      "content_sha256": "bcf23ca89b76a6318128a03b983a3eec4e8638b62a8971edf12ce82d663a6707"
+    },
+    {
+      "shard_index": 18,
+      "cid": "mmrf-shard:ad22371f29837f14eddcb70f212b854ed1d24a5e828c7f7113e4b2d5e4f17fcf",
+      "range_start": 1800000,
+      "range_end_exclusive": 1900000,
+      "row_count": 6957,
+      "file_path": "lake_data/primary/shards/shard_000018_ad22371f29837f14.npz",
+      "file_sha256": "7f97ea6096585bd357fbe7d36fa680e77491fd303f53c263e1235148f906900a",
+      "content_sha256": "ad22371f29837f14eddcb70f212b854ed1d24a5e828c7f7113e4b2d5e4f17fcf"
+    },
+    {
+      "shard_index": 19,
+      "cid": "mmrf-shard:b71fa6e1ca8323620dc11bd3b5ca94aa14965769b647f0fd7278ac40a34d75d4",
+      "range_start": 1900000,
+      "range_end_exclusive": 2000000,
+      "row_count": 6904,
+      "file_path": "lake_data/primary/shards/shard_000019_b71fa6e1ca832362.npz",
+      "file_sha256": "600d5468790538d433eabc4e9a5f124e45bd698b7a22644f03baa195cff9d7ec",
+      "content_sha256": "b71fa6e1ca8323620dc11bd3b5ca94aa14965769b647f0fd7278ac40a34d75d4"
+    }
+  ],
+  "safety": {
+    "classification": "L0_PUBLIC_MATH",
+    "source_factor_relations": false,
+    "rsa_target_endpoint": false,
+    "factor_candidate_endpoint": false,
+    "exact_prime_list_endpoint": false
+  },
+  "created_at": "2026-07-29T13:40:41.176736+00:00",
+  "manifest_sha256": "85a884be5c88359357852619ffe9d46e5a315db16940815840b456d9621f9c17"
+}

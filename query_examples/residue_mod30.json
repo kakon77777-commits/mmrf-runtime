@@ -1,0 +1,7 @@
+{
+  "version": "MMRF-SQL-0.8",
+  "operation": "residue_distribution",
+  "shard_start": 0,
+  "shard_count": 20,
+  "modulo": 30
+}

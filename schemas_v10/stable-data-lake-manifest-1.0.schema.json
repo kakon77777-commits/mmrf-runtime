@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Stable Data Lake Manifest 1.0",
+  "type": "object",
+  "required": [
+    "schema",
+    "stable_profile",
+    "dataset_id",
+    "schema_version",
+    "logical_schema_source",
+    "source_candidate_manifest_sha256",
+    "source_manifest_sha256",
+    "generation",
+    "limit_exclusive",
+    "shard_size",
+    "shard_count",
+    "prime_count",
+    "columnar_format",
+    "column_order",
+    "cid_semantics",
+    "shards",
+    "governance",
+    "provenance_graph_sha256",
+    "citation_id",
+    "citation_sha256",
+    "safety",
+    "frozen_semantics",
+    "manifest_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-data-lake-manifest-1.0"
+    },
+    "stable_profile": {
+      "const": "MMRF-PUBLIC-RESEARCH-1.0"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "logical_schema_source": {
+      "const": "0.9"
+    },
+    "cid_semantics": {
+      "const": "MMRF-NPZ-COLUMNAR-0.9 logical canonical column content"
+    },
+    "safety": {
+      "type": "object",
+      "required": [
+        "classification",
+        "source_factor_relations",
+        "rsa_target_endpoint",
+        "factor_candidate_endpoint",
+        "range_narrowing_endpoint",
+        "exact_prime_list_endpoint",
+        "raw_factor_export"
+      ],
+      "properties": {
+        "classification": {
+          "const": "L0_PUBLIC_MATH"
+        },
+        "source_factor_relations": {
+          "const": false
+        },
+        "rsa_target_endpoint": {
+          "const": false
+        },
+        "factor_candidate_endpoint": {
+          "const": false
+        },
+        "range_narrowing_endpoint": {
+          "const": false
+        },
+        "exact_prime_list_endpoint": {
+          "const": false
+        },
+        "raw_factor_export": {
+          "const": false
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

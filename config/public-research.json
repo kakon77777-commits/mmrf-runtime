@@ -1,0 +1,19 @@
+{
+  "schema": "mmrf-runtime-config-1.0",
+  "profile": "public-research",
+  "dataset_manifest": "stable_data/stable_manifest_v1.0.json",
+  "query_language": "MMRF-SQL-0.8",
+  "max_shards_per_public_query": 20,
+  "session_query_budget": 120,
+  "controlled_components_enabled": false,
+  "network_services_enabled": false,
+  "safety": {
+    "target_conditioned_queries": false,
+    "rsa_target_endpoint": false,
+    "factor_candidate_endpoint": false,
+    "range_narrowing_endpoint": false,
+    "exact_prime_list_endpoint": false,
+    "raw_factor_export": false,
+    "source_factor_relations": false
+  }
+}

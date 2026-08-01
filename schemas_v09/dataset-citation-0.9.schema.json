@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMRF Dataset Citation 0.9",
+  "type": "object",
+  "required": [
+    "schema",
+    "citation_id",
+    "title",
+    "publisher",
+    "dataset_id",
+    "manifest_sha256",
+    "promotion_receipt_sha256",
+    "provenance_graph_sha256",
+    "preferred_citation",
+    "citation_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mmrf-dataset-citation-0.9"
+    }
+  },
+  "additionalProperties": true
+}

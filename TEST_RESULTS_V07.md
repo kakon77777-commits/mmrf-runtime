@@ -1,0 +1,26 @@
+# MMRF v0.7 Test Results
+
+- Smoke test: PASS
+- Independent subprocesses: 7
+- Mandatory mutual TLS: PASS
+- Rogue client rejected during TLS handshake: PASS
+- Initial policy propagation to 3 nodes: PASS
+- Revocation policy propagation to 3 nodes: PASS
+- Maximum revocation propagation: 51.143 ms
+- Tampered policy snapshot rejected: PASS
+- Skipped policy version rejected: PASS
+- Pre-revocation Node A → Node B replication: HTTP 202
+- Revoked recipient rejected: HTTP 403
+- Revoked sender rejected despite valid TLS certificate: HTTP 403
+- Active sender to active recipient: HTTP 202
+- RSA modulus field rejected: HTTP 403
+- Approved software measurement: PASS
+- Unknown software measurement quarantined: PASS
+- Hardware attestation adapters explicitly unimplemented: PASS
+- Witness gossip converged: PASS
+- Same-size split view rejected: equivocation_detected
+- STH rollback rejected: tree_size_rollback
+- RSA target endpoint: DISABLED
+- Factor candidate endpoint: DISABLED
+- Range narrowing endpoint: DISABLED
+- Private keys in release ZIP: NO

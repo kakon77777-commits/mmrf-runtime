@@ -1,0 +1,6 @@
+{
+  "version": "MMRF-SQL-0.8",
+  "operation": "family_counts",
+  "shard_start": 0,
+  "shard_count": 20
+}
