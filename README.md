@@ -29,3 +29,19 @@ python install/mmrf.py install   --project-root .   --target ./installed-mmrf   
 The default installation exposes aggregate mathematical research only.
 Controlled Enclave and Vault source modules require an explicit authorization
 file and include no private keys or controlled datasets.
+
+## Prime expansion candidates
+
+The stable v1.0 dataset is frozen. An append-only expansion candidate can be
+generated without changing it:
+
+```bash
+python workflows/prime_expansion_candidate.py --as-of YYYY-MM-DD
+```
+
+The workflow writes an unpromoted candidate shard, a candidate manifest, an
+independent verification record, and `HANDOFF.md` under `research_candidates/`.
+It checks the next non-overlapping 100,000-value range with both a NumPy sieve
+and a separate Python segmented sieve. A candidate is not a public stable
+generation until independent review and the existing MMRF governance chain are
+complete.
