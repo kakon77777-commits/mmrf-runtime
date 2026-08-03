@@ -138,6 +138,38 @@ def load_stable_primes(manifest: dict) -> np.ndarray:
     return result
 
 
+def load_prior_candidate(candidate_dir: Path, stable_manifest: dict) -> tuple[dict, np.ndarray]:
+    candidate_dir = candidate_dir.resolve()
+    try:
+        candidate_dir.relative_to(ROOT)
+    except ValueError as exc:
+        raise SystemExit("prior_candidate_must_be_inside_project_root") from exc
+    manifest_path = candidate_dir / "candidate_manifest.json"
+    review_path = candidate_dir / "independent_review.json"
+    if not manifest_path.exists() or not review_path.exists():
+        raise SystemExit("prior_candidate_requires_manifest_and_independent_review")
+    candidate = json.loads(manifest_path.read_text(encoding="utf-8"))
+    review = json.loads(review_path.read_text(encoding="utf-8"))
+    candidate_core = {key: value for key, value in candidate.items() if key != "manifest_sha256"}
+    if candidate.get("manifest_sha256") != sha256_json(candidate_core):
+        raise SystemExit("prior_candidate_manifest_hash_mismatch")
+    if candidate.get("base_manifest_sha256") != stable_manifest.get("manifest_sha256"):
+        raise SystemExit("prior_candidate_stable_base_binding_mismatch")
+    if candidate.get("status") != "CANDIDATE_UNPROMOTED" or review.get("valid") is not True:
+        raise SystemExit("prior_candidate_independent_review_required")
+    if review.get("candidate_manifest_sha256") != candidate["manifest_sha256"]:
+        raise SystemExit("prior_candidate_review_binding_mismatch")
+    if len(candidate.get("shards", [])) != 1:
+        raise SystemExit("prior_candidate_must_contain_one_shard")
+    record = candidate["shards"][0]
+    shard_path = ROOT / record["file_path"]
+    with np.load(shard_path, allow_pickle=False) as archive:
+        primes = np.asarray(archive["prime"], dtype=np.int64)
+    if len(primes) != int(record["row_count"]):
+        raise SystemExit("prior_candidate_row_count_mismatch")
+    return candidate, primes
+
+
 def build_candidate_arrays(
     all_primes: np.ndarray,
     base_count: int,
@@ -231,7 +263,12 @@ def write_handoff(path: Path, summary: dict) -> None:
         f"- Shard index: `{shard['shard_index']}`\n"
         f"- Logical CID: `{shard['cid']}`\n"
         f"- Candidate manifest SHA-256: `{summary['candidate_manifest']['manifest_sha256']}`\n\n"
-        "## Verification\n\n"
+        + (
+            f"- Prior candidate manifest SHA-256: `{summary['candidate_manifest']['prior_candidate_manifest_sha256']}`\n\n"
+            if "prior_candidate_manifest_sha256" in summary["candidate_manifest"]
+            else ""
+        )
+        + "## Verification\n\n"
         + "\n".join(f"- {name}: `{value}`" for name, value in checks.items())
         + "\n\n## Next relay\n\n"
         "1. Re-run this workflow independently and compare the logical CID.\n"
@@ -247,6 +284,7 @@ def main() -> int:
     parser.add_argument("--as-of", default=datetime.now(timezone.utc).date().isoformat())
     parser.add_argument("--limit-exclusive", type=int, default=None)
     parser.add_argument("--output-dir", type=Path, default=None)
+    parser.add_argument("--continue-from", type=Path, default=None)
     args = parser.parse_args()
 
     manifest_path = ROOT / "stable_data" / "stable_manifest_v1.0.json"
@@ -261,12 +299,23 @@ def main() -> int:
 
     base_limit = int(manifest["limit_exclusive"])
     shard_size = int(manifest["shard_size"])
-    limit_exclusive = args.limit_exclusive or (base_limit + shard_size)
-    if limit_exclusive != base_limit + shard_size:
-        raise SystemExit("first_candidate_must_be_one_shard_beyond_stable_limit")
+    prior_candidate = None
+    prior_primes = np.asarray([], dtype=np.int64)
+    if args.continue_from:
+        prior_candidate, prior_primes = load_prior_candidate(args.continue_from, manifest)
+        base_limit = int(prior_candidate["range_end_exclusive"])
+        candidate_generation = int(prior_candidate["candidate_generation"]) + 1
+        limit_exclusive = args.limit_exclusive or (base_limit + shard_size)
+        if limit_exclusive != base_limit + shard_size:
+            raise SystemExit("continued_candidate_must_be_one_shard_beyond_prior_candidate")
+    else:
+        candidate_generation = int(manifest["generation"]) + 1
+        limit_exclusive = args.limit_exclusive or (base_limit + shard_size)
+        if limit_exclusive != base_limit + shard_size:
+            raise SystemExit("first_candidate_must_be_one_shard_beyond_stable_limit")
 
     output_dir = args.output_dir or ROOT / "research_candidates" / (
-        f"{args.as_of}-generation-{int(manifest['generation']) + 1:03d}-"
+        f"{args.as_of}-generation-{candidate_generation:03d}-"
         f"{base_limit}-{limit_exclusive}"
     )
     output_dir = output_dir.resolve()
@@ -278,17 +327,26 @@ def main() -> int:
     shard_dir.mkdir(parents=True, exist_ok=True)
 
     stable_primes = load_stable_primes(manifest)
+    prior_primes = prior_primes.astype(np.int64, copy=False)
+    known_primes = np.concatenate([stable_primes, prior_primes])
     all_primes = numpy_sieve(limit_exclusive)
+    if prior_candidate is not None:
+        prior_expected = all_primes[
+            np.searchsorted(all_primes, int(prior_candidate["range_start"]), side="left"):
+            np.searchsorted(all_primes, int(prior_candidate["range_end_exclusive"]), side="left")
+        ]
+        if not np.array_equal(prior_primes, prior_expected):
+            raise SystemExit("prior_candidate_prime_values_mismatch")
     arrays = build_candidate_arrays(
         all_primes,
-        len(stable_primes),
+        len(known_primes),
         base_limit,
         limit_exclusive,
     )
     verification = verify_arrays(
         arrays,
         all_primes,
-        len(stable_primes),
+        len(known_primes),
         base_limit,
         limit_exclusive,
     )
@@ -296,7 +354,7 @@ def main() -> int:
         raise SystemExit(f"candidate_arrays_invalid:{json.dumps(verification, sort_keys=True)}")
 
     content_sha = canonical_array_content_sha256(arrays)
-    shard_index = int(manifest["shard_count"])
+    shard_index = int(manifest["shard_count"]) + (1 if prior_candidate is not None else 0)
     shard_path = shard_dir / f"shard_{shard_index:06d}_{content_sha[:16]}.npz"
     if not shard_path.exists():
         np.savez_compressed(shard_path, **arrays)
@@ -318,7 +376,7 @@ def main() -> int:
         "dataset_id": manifest["dataset_id"],
         "base_manifest_sha256": manifest["manifest_sha256"],
         "base_generation": int(manifest["generation"]),
-        "candidate_generation": int(manifest["generation"]) + 1,
+        "candidate_generation": candidate_generation,
         "range_start": base_limit,
         "range_end_exclusive": limit_exclusive,
         "shard_size": shard_size,
@@ -334,6 +392,12 @@ def main() -> int:
         ],
         "created_on": args.as_of,
     }
+    if prior_candidate is not None:
+        candidate_core.update({
+            "prior_candidate_id": prior_candidate["candidate_id"],
+            "prior_candidate_manifest_sha256": prior_candidate["manifest_sha256"],
+            "prior_candidate_generation": int(prior_candidate["candidate_generation"]),
+        })
     candidate_manifest = {
         **candidate_core,
         "manifest_sha256": sha256_json(candidate_core),
@@ -350,6 +414,10 @@ def main() -> int:
         "prior_stable_shards_untouched": True,
         "verified_on": args.as_of,
     }
+    if prior_candidate is not None:
+        verification_record["prior_candidate_id"] = prior_candidate["candidate_id"]
+        verification_record["prior_candidate_manifest_sha256"] = prior_candidate["manifest_sha256"]
+        verification_record["prior_candidate_prime_count"] = len(prior_primes)
     verification_record["verification_sha256"] = sha256_json(verification_record)
     (output_dir / "candidate_manifest.json").write_text(
         json.dumps(candidate_manifest, ensure_ascii=False, indent=2) + "\n",
@@ -362,13 +430,15 @@ def main() -> int:
     summary = {
         "as_of": args.as_of,
         "base_generation": int(manifest["generation"]),
-        "candidate_generation": int(manifest["generation"]) + 1,
+        "candidate_generation": candidate_generation,
         "range_start": base_limit,
         "range_end_exclusive": limit_exclusive,
         "prime_count_increment": len(arrays["prime"]),
         "candidate_manifest": candidate_manifest,
         "verification": verification,
     }
+    if prior_candidate is not None:
+        summary["prior_candidate_manifest_sha256"] = prior_candidate["manifest_sha256"]
     write_handoff(output_dir / "HANDOFF.md", summary)
     print(json.dumps({
         "status": candidate_core["status"],

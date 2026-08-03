@@ -45,3 +45,19 @@ It checks the next non-overlapping 100,000-value range with both a NumPy sieve
 and a separate Python segmented sieve. A candidate is not a public stable
 generation until independent review and the existing MMRF governance chain are
 complete.
+
+After a candidate has a passing `independent_review.json`, continue the relay
+from that candidate with:
+
+```bash
+python workflows/prime_expansion_candidate.py \
+  --as-of YYYY-MM-DD \
+  --continue-from research_candidates/YYYY-MM-DD-generation-003-2000000-2100000
+python workflows/verify_prime_expansion_candidate.py \
+  --candidate-dir research_candidates/YYYY-MM-DD-generation-004-2100000-2200000 \
+  --prior-candidate-dir research_candidates/YYYY-MM-DD-generation-003-2000000-2100000
+```
+
+The continuation requires the prior candidate's independent review and keeps
+the stable v1.0 manifest as the immutable anchor. Both candidates remain
+unpromoted until the governance chain approves a new stable generation.
