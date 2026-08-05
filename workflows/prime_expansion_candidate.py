@@ -354,7 +354,11 @@ def main() -> int:
         raise SystemExit(f"candidate_arrays_invalid:{json.dumps(verification, sort_keys=True)}")
 
     content_sha = canonical_array_content_sha256(arrays)
-    shard_index = int(manifest["shard_count"]) + (1 if prior_candidate is not None else 0)
+    shard_index = (
+        int(prior_candidate["shards"][0]["shard_index"]) + 1
+        if prior_candidate is not None
+        else int(manifest["shard_count"])
+    )
     shard_path = shard_dir / f"shard_{shard_index:06d}_{content_sha[:16]}.npz"
     if not shard_path.exists():
         np.savez_compressed(shard_path, **arrays)
