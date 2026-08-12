@@ -1,0 +1,59 @@
+{
+  "schema": "mmrf-prime-expansion-candidate-1.0",
+  "candidate_id": "mmrf-expansion-2026-08-12-2300000-2400000",
+  "status": "CANDIDATE_UNPROMOTED",
+  "dataset_id": "mmrf-public-prime-lake",
+  "base_manifest_sha256": "a5caea22a57efaac915c00dd92c655b1126e0b6d9b2b93790e48bc167733e0d1",
+  "base_generation": 2,
+  "candidate_generation": 6,
+  "range_start": 2300000,
+  "range_end_exclusive": 2400000,
+  "shard_size": 100000,
+  "shard_count_increment": 1,
+  "prime_count_increment": 6791,
+  "column_order": [
+    "prime",
+    "ordinal",
+    "bit_length",
+    "decimal_digits",
+    "previous_gap",
+    "residue_6",
+    "residue_30",
+    "residue_210",
+    "family_flags",
+    "wheel30_class"
+  ],
+  "cid_semantics": "MMRF-NPZ-COLUMNAR-0.9 logical canonical column content",
+  "safety": {
+    "classification": "L0_PUBLIC_MATH",
+    "source_factor_relations": false,
+    "rsa_target_endpoint": false,
+    "factor_candidate_endpoint": false,
+    "range_narrowing_endpoint": false,
+    "exact_prime_list_endpoint": false,
+    "raw_factor_export": false
+  },
+  "shards": [
+    {
+      "shard_index": 23,
+      "cid": "mmrf-shard:2b938348e5ed8454e0d6d1b7bb77e124b851b60a51bc5d89b32668f4621d73ae",
+      "range_start": 2300000,
+      "range_end_exclusive": 2400000,
+      "row_count": 6791,
+      "file_path": "research_candidates/2026-08-12-correction-generation-006-2300000-2400000/shards/shard_000023_2b938348e5ed8454.npz",
+      "file_sha256": "5167b4debfc2024f94579a2dbed9aa04b7bc6c59e04535eecc995af9c5fc31eb",
+      "content_sha256": "2b938348e5ed8454e0d6d1b7bb77e124b851b60a51bc5d89b32668f4621d73ae"
+    }
+  ],
+  "required_review": [
+    "independent_math_validation",
+    "independent_data_integrity_validation"
+  ],
+  "created_on": "2026-08-12",
+  "prior_candidate_id": "mmrf-expansion-2026-08-12-2200000-2300000",
+  "prior_candidate_manifest_sha256": "a23e9dd97d2cbd064c41acf775bac8527f8eb61a5575f11f721f652485c53ba8",
+  "prior_candidate_generation": 5,
+  "supersedes_candidate_manifest_sha256": "81cc8ce7cdfa40bac836a9e279204192e8bf5e6f15cea7b6a9a12dd82b8ecb14",
+  "revision_reason": "full_candidate_chain_ordinal_repair",
+  "manifest_sha256": "5a1f705e8f6ecb9bffbdfae7b19d504088f5f0c71ccdc3a0a7af5055034f30c3"
+}

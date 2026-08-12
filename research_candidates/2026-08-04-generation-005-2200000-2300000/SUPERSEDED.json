@@ -1,0 +1,8 @@
+{
+  "schema": "mmrf-candidate-supersession-1.0",
+  "as_of": "2026-08-12",
+  "status": "SUPERSEDED_UNPROMOTED",
+  "superseded_manifest_sha256": "9ab2b083590dcaac0bdfa65ca8c1c22bea758223b3e4479c16288055ab771847",
+  "replacement_manifest_sha256": "a23e9dd97d2cbd064c41acf775bac8527f8eb61a5575f11f721f652485c53ba8",
+  "correction_map": "research_candidates/chain_audits/2026-08-12-correction-map.json"
+}

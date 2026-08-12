@@ -1,0 +1,280 @@
+{
+  "schema": "mmrf-prime-expansion-chain-audit-1.0",
+  "as_of": "2026-08-12",
+  "base_manifest_sha256": "a5caea22a57efaac915c00dd92c655b1126e0b6d9b2b93790e48bc167733e0d1",
+  "entries": [
+    {
+      "candidate_generation": 3,
+      "candidate_directory": "research_candidates/2026-08-02-generation-003-2000000-2100000",
+      "candidate_manifest_sha256": "3e801ad3751ff3f67e41febb901955ab307235453cbb31c3cb14b570f12bcf5c",
+      "range": [
+        2000000,
+        2100000
+      ],
+      "prime_count": 6872,
+      "expected_ordinal": [
+        148934,
+        155805
+      ],
+      "actual_ordinal": [
+        148934,
+        155805
+      ],
+      "ordinal_offset": 0,
+      "checks": {
+        "generation_continuity": true,
+        "range_continuity": true,
+        "shard_index_continuity": true,
+        "prior_manifest_binding": true,
+        "full_chain_ordinal_continuity": true
+      },
+      "valid": true
+    },
+    {
+      "candidate_generation": 4,
+      "candidate_directory": "research_candidates/2026-08-03-generation-004-2100000-2200000",
+      "candidate_manifest_sha256": "5e63aefb0fcee29011d1c5d94cc798d0841ada67c217754750dd242fc55a9513",
+      "range": [
+        2100000,
+        2200000
+      ],
+      "prime_count": 6857,
+      "expected_ordinal": [
+        155806,
+        162662
+      ],
+      "actual_ordinal": [
+        155806,
+        162662
+      ],
+      "ordinal_offset": 0,
+      "checks": {
+        "generation_continuity": true,
+        "range_continuity": true,
+        "shard_index_continuity": true,
+        "prior_manifest_binding": true,
+        "full_chain_ordinal_continuity": true
+      },
+      "valid": true
+    },
+    {
+      "candidate_generation": 5,
+      "candidate_directory": "research_candidates/2026-08-04-generation-005-2200000-2300000",
+      "candidate_manifest_sha256": "9ab2b083590dcaac0bdfa65ca8c1c22bea758223b3e4479c16288055ab771847",
+      "range": [
+        2200000,
+        2300000
+      ],
+      "prime_count": 6849,
+      "expected_ordinal": [
+        162663,
+        169511
+      ],
+      "actual_ordinal": [
+        155791,
+        162639
+      ],
+      "ordinal_offset": -6872,
+      "checks": {
+        "generation_continuity": true,
+        "range_continuity": true,
+        "shard_index_continuity": true,
+        "prior_manifest_binding": true,
+        "full_chain_ordinal_continuity": false
+      },
+      "valid": false
+    },
+    {
+      "candidate_generation": 6,
+      "candidate_directory": "research_candidates/2026-08-05-generation-006-2300000-2400000",
+      "candidate_manifest_sha256": "81cc8ce7cdfa40bac836a9e279204192e8bf5e6f15cea7b6a9a12dd82b8ecb14",
+      "range": [
+        2300000,
+        2400000
+      ],
+      "prime_count": 6791,
+      "expected_ordinal": [
+        169512,
+        176302
+      ],
+      "actual_ordinal": [
+        155783,
+        162573
+      ],
+      "ordinal_offset": -13729,
+      "checks": {
+        "generation_continuity": true,
+        "range_continuity": true,
+        "shard_index_continuity": true,
+        "prior_manifest_binding": true,
+        "full_chain_ordinal_continuity": false
+      },
+      "valid": false
+    },
+    {
+      "candidate_generation": 7,
+      "candidate_directory": "research_candidates/2026-08-06-generation-007-2400000-2500000",
+      "candidate_manifest_sha256": "da29c755da37fe6c75030d964c11825e038677153409722cfb578714375a4e66",
+      "range": [
+        2400000,
+        2500000
+      ],
+      "prime_count": 6770,
+      "expected_ordinal": [
+        176303,
+        183072
+      ],
+      "actual_ordinal": [
+        155725,
+        162494
+      ],
+      "ordinal_offset": -20578,
+      "checks": {
+        "generation_continuity": true,
+        "range_continuity": true,
+        "shard_index_continuity": true,
+        "prior_manifest_binding": true,
+        "full_chain_ordinal_continuity": false
+      },
+      "valid": false
+    },
+    {
+      "candidate_generation": 8,
+      "candidate_directory": "research_candidates/2026-08-07-generation-008-2500000-2600000",
+      "candidate_manifest_sha256": "93a2af608e1c09116019db241b183442beab76cd44ff55353551eb93932b2b87",
+      "range": [
+        2500000,
+        2600000
+      ],
+      "prime_count": 6808,
+      "expected_ordinal": [
+        183073,
+        189880
+      ],
+      "actual_ordinal": [
+        155704,
+        162511
+      ],
+      "ordinal_offset": -27369,
+      "checks": {
+        "generation_continuity": true,
+        "range_continuity": true,
+        "shard_index_continuity": true,
+        "prior_manifest_binding": true,
+        "full_chain_ordinal_continuity": false
+      },
+      "valid": false
+    },
+    {
+      "candidate_generation": 9,
+      "candidate_directory": "research_candidates/2026-08-08-generation-009-2600000-2700000",
+      "candidate_manifest_sha256": "b4a88ceb4d2bd619947d7d6bad34aabd6c9e7a2ff0d3befecc8be58599dbe005",
+      "range": [
+        2600000,
+        2700000
+      ],
+      "prime_count": 6765,
+      "expected_ordinal": [
+        189881,
+        196645
+      ],
+      "actual_ordinal": [
+        155742,
+        162506
+      ],
+      "ordinal_offset": -34139,
+      "checks": {
+        "generation_continuity": true,
+        "range_continuity": true,
+        "shard_index_continuity": true,
+        "prior_manifest_binding": true,
+        "full_chain_ordinal_continuity": false
+      },
+      "valid": false
+    },
+    {
+      "candidate_generation": 10,
+      "candidate_directory": "research_candidates/2026-08-09-generation-010-2700000-2800000",
+      "candidate_manifest_sha256": "68cc26d580b299c65d05732911f3abdc3ed653a1de44971bbdfb6b3b933be5bd",
+      "range": [
+        2700000,
+        2800000
+      ],
+      "prime_count": 6717,
+      "expected_ordinal": [
+        196646,
+        203362
+      ],
+      "actual_ordinal": [
+        155699,
+        162415
+      ],
+      "ordinal_offset": -40947,
+      "checks": {
+        "generation_continuity": true,
+        "range_continuity": true,
+        "shard_index_continuity": true,
+        "prior_manifest_binding": true,
+        "full_chain_ordinal_continuity": false
+      },
+      "valid": false
+    },
+    {
+      "candidate_generation": 11,
+      "candidate_directory": "research_candidates/2026-08-10-generation-011-2800000-2900000",
+      "candidate_manifest_sha256": "1cd497c22782079c02acefc07bca3c7f850f3fa26bb5dc52c82101cea6dbf532",
+      "range": [
+        2800000,
+        2900000
+      ],
+      "prime_count": 6747,
+      "expected_ordinal": [
+        203363,
+        210109
+      ],
+      "actual_ordinal": [
+        155651,
+        162397
+      ],
+      "ordinal_offset": -47712,
+      "checks": {
+        "generation_continuity": true,
+        "range_continuity": true,
+        "shard_index_continuity": true,
+        "prior_manifest_binding": true,
+        "full_chain_ordinal_continuity": false
+      },
+      "valid": false
+    },
+    {
+      "candidate_generation": 12,
+      "candidate_directory": "research_candidates/2026-08-11-generation-012-2900000-3000000",
+      "candidate_manifest_sha256": "a1ee18026b7a646ea9da0633deaf11c091ba0a11306c84d02557d643aaf413c8",
+      "range": [
+        2900000,
+        3000000
+      ],
+      "prime_count": 6707,
+      "expected_ordinal": [
+        210110,
+        216816
+      ],
+      "actual_ordinal": [
+        155681,
+        162387
+      ],
+      "ordinal_offset": -54429,
+      "checks": {
+        "generation_continuity": true,
+        "range_continuity": true,
+        "shard_index_continuity": true,
+        "prior_manifest_binding": true,
+        "full_chain_ordinal_continuity": false
+      },
+      "valid": false
+    }
+  ],
+  "valid": false,
+  "first_invalid_generation": 5,
+  "audit_sha256": "d5e799f9496adc7a7faed66e16f70f8f4d6eb7eaef66b4471020e2ec37243750"
+}

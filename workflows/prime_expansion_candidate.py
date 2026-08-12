@@ -138,7 +138,18 @@ def load_stable_primes(manifest: dict) -> np.ndarray:
     return result
 
 
-def load_prior_candidate(candidate_dir: Path, stable_manifest: dict) -> tuple[dict, np.ndarray]:
+def candidate_manifest_catalog() -> dict[str, Path]:
+    catalog: dict[str, Path] = {}
+    for manifest_path in (ROOT / "research_candidates").glob("**/candidate_manifest.json"):
+        candidate = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest_sha = candidate.get("manifest_sha256")
+        if manifest_sha in catalog and catalog[manifest_sha] != manifest_path.parent:
+            raise SystemExit(f"duplicate_candidate_manifest_sha256:{manifest_sha}")
+        catalog[manifest_sha] = manifest_path.parent
+    return catalog
+
+
+def load_candidate_entry(candidate_dir: Path) -> tuple[dict, dict[str, np.ndarray]]:
     candidate_dir = candidate_dir.resolve()
     try:
         candidate_dir.relative_to(ROOT)
@@ -153,8 +164,6 @@ def load_prior_candidate(candidate_dir: Path, stable_manifest: dict) -> tuple[di
     candidate_core = {key: value for key, value in candidate.items() if key != "manifest_sha256"}
     if candidate.get("manifest_sha256") != sha256_json(candidate_core):
         raise SystemExit("prior_candidate_manifest_hash_mismatch")
-    if candidate.get("base_manifest_sha256") != stable_manifest.get("manifest_sha256"):
-        raise SystemExit("prior_candidate_stable_base_binding_mismatch")
     if candidate.get("status") != "CANDIDATE_UNPROMOTED" or review.get("valid") is not True:
         raise SystemExit("prior_candidate_independent_review_required")
     if review.get("candidate_manifest_sha256") != candidate["manifest_sha256"]:
@@ -164,10 +173,86 @@ def load_prior_candidate(candidate_dir: Path, stable_manifest: dict) -> tuple[di
     record = candidate["shards"][0]
     shard_path = ROOT / record["file_path"]
     with np.load(shard_path, allow_pickle=False) as archive:
-        primes = np.asarray(archive["prime"], dtype=np.int64)
-    if len(primes) != int(record["row_count"]):
+        if tuple(archive.files) != V09_COLUMNS:
+            raise SystemExit("prior_candidate_columns_mismatch")
+        arrays = {name: np.asarray(archive[name]) for name in V09_COLUMNS}
+    if len(arrays["prime"]) != int(record["row_count"]):
         raise SystemExit("prior_candidate_row_count_mismatch")
-    return candidate, primes
+    if file_sha256(shard_path) != record["file_sha256"]:
+        raise SystemExit("prior_candidate_transport_hash_mismatch")
+    if canonical_array_content_sha256(arrays) != record["content_sha256"]:
+        raise SystemExit("prior_candidate_logical_hash_mismatch")
+    return candidate, arrays
+
+
+def load_prior_candidate_chain(
+    candidate_dir: Path,
+    stable_manifest: dict,
+) -> tuple[dict, np.ndarray, list[dict]]:
+    catalog = candidate_manifest_catalog()
+    reverse_chain: list[tuple[dict, dict[str, np.ndarray]]] = []
+    seen: set[str] = set()
+    current_dir = candidate_dir.resolve()
+    while True:
+        candidate, arrays = load_candidate_entry(current_dir)
+        manifest_sha = candidate["manifest_sha256"]
+        if manifest_sha in seen:
+            raise SystemExit("prior_candidate_chain_cycle")
+        seen.add(manifest_sha)
+        reverse_chain.append((candidate, arrays))
+        prior_sha = candidate.get("prior_candidate_manifest_sha256")
+        if prior_sha is None:
+            break
+        if prior_sha not in catalog:
+            raise SystemExit(f"prior_candidate_manifest_not_found:{prior_sha}")
+        current_dir = catalog[prior_sha]
+
+    chain = list(reversed(reverse_chain))
+    expected_generation = int(stable_manifest["generation"]) + 1
+    expected_start = int(stable_manifest["limit_exclusive"])
+    expected_shard_index = int(stable_manifest["shard_count"])
+    expected_ordinal = int(stable_manifest["prime_count"]) + 1
+    previous: dict | None = None
+    chain_primes: list[np.ndarray] = []
+    for candidate, arrays in chain:
+        record = candidate["shards"][0]
+        primes = np.asarray(arrays["prime"], dtype=np.int64)
+        ordinals = np.asarray(arrays["ordinal"], dtype=np.int64)
+        if candidate.get("base_manifest_sha256") != stable_manifest["manifest_sha256"]:
+            raise SystemExit("prior_candidate_stable_base_binding_mismatch")
+        if int(candidate["candidate_generation"]) != expected_generation:
+            raise SystemExit("prior_candidate_generation_discontinuity")
+        if int(candidate["range_start"]) != expected_start:
+            raise SystemExit("prior_candidate_range_discontinuity")
+        if int(candidate["range_end_exclusive"]) != expected_start + int(stable_manifest["shard_size"]):
+            raise SystemExit("prior_candidate_range_size_mismatch")
+        if int(record["shard_index"]) != expected_shard_index:
+            raise SystemExit("prior_candidate_shard_index_discontinuity")
+        if not len(primes) or int(primes[0]) < expected_start or int(primes[-1]) >= int(candidate["range_end_exclusive"]):
+            raise SystemExit("prior_candidate_prime_range_mismatch")
+        if not np.array_equal(
+            ordinals,
+            np.arange(expected_ordinal, expected_ordinal + len(primes), dtype=np.int64),
+        ):
+            raise SystemExit(
+                f"prior_candidate_full_chain_ordinal_mismatch:generation={expected_generation}"
+            )
+        if previous is None:
+            if "prior_candidate_manifest_sha256" in candidate:
+                raise SystemExit("first_candidate_unexpected_prior_binding")
+        else:
+            if candidate.get("prior_candidate_manifest_sha256") != previous["manifest_sha256"]:
+                raise SystemExit("prior_candidate_direct_hash_binding_mismatch")
+            if int(candidate.get("prior_candidate_generation", -1)) != int(previous["candidate_generation"]):
+                raise SystemExit("prior_candidate_direct_generation_binding_mismatch")
+        chain_primes.append(primes)
+        previous = candidate
+        expected_generation += 1
+        expected_start = int(candidate["range_end_exclusive"])
+        expected_shard_index += 1
+        expected_ordinal += len(primes)
+
+    return chain[-1][0], np.concatenate(chain_primes), [item[0] for item in chain]
 
 
 def build_candidate_arrays(
@@ -285,6 +370,7 @@ def main() -> int:
     parser.add_argument("--limit-exclusive", type=int, default=None)
     parser.add_argument("--output-dir", type=Path, default=None)
     parser.add_argument("--continue-from", type=Path, default=None)
+    parser.add_argument("--supersedes-manifest-sha256", default=None)
     args = parser.parse_args()
 
     manifest_path = ROOT / "stable_data" / "stable_manifest_v1.0.json"
@@ -301,8 +387,12 @@ def main() -> int:
     shard_size = int(manifest["shard_size"])
     prior_candidate = None
     prior_primes = np.asarray([], dtype=np.int64)
+    prior_chain: list[dict] = []
     if args.continue_from:
-        prior_candidate, prior_primes = load_prior_candidate(args.continue_from, manifest)
+        prior_candidate, prior_primes, prior_chain = load_prior_candidate_chain(
+            args.continue_from,
+            manifest,
+        )
         base_limit = int(prior_candidate["range_end_exclusive"])
         candidate_generation = int(prior_candidate["candidate_generation"]) + 1
         limit_exclusive = args.limit_exclusive or (base_limit + shard_size)
@@ -331,12 +421,12 @@ def main() -> int:
     known_primes = np.concatenate([stable_primes, prior_primes])
     all_primes = numpy_sieve(limit_exclusive)
     if prior_candidate is not None:
-        prior_expected = all_primes[
-            np.searchsorted(all_primes, int(prior_candidate["range_start"]), side="left"):
-            np.searchsorted(all_primes, int(prior_candidate["range_end_exclusive"]), side="left")
+        chain_expected = all_primes[
+            np.searchsorted(all_primes, int(manifest["limit_exclusive"]), side="left"):
+            np.searchsorted(all_primes, base_limit, side="left")
         ]
-        if not np.array_equal(prior_primes, prior_expected):
-            raise SystemExit("prior_candidate_prime_values_mismatch")
+        if not np.array_equal(prior_primes, chain_expected):
+            raise SystemExit("prior_candidate_full_chain_prime_values_mismatch")
     arrays = build_candidate_arrays(
         all_primes,
         len(known_primes),
@@ -402,6 +492,11 @@ def main() -> int:
             "prior_candidate_manifest_sha256": prior_candidate["manifest_sha256"],
             "prior_candidate_generation": int(prior_candidate["candidate_generation"]),
         })
+    if args.supersedes_manifest_sha256:
+        candidate_core.update({
+            "supersedes_candidate_manifest_sha256": args.supersedes_manifest_sha256,
+            "revision_reason": "full_candidate_chain_ordinal_repair",
+        })
     candidate_manifest = {
         **candidate_core,
         "manifest_sha256": sha256_json(candidate_core),
@@ -421,7 +516,8 @@ def main() -> int:
     if prior_candidate is not None:
         verification_record["prior_candidate_id"] = prior_candidate["candidate_id"]
         verification_record["prior_candidate_manifest_sha256"] = prior_candidate["manifest_sha256"]
-        verification_record["prior_candidate_prime_count"] = len(prior_primes)
+        verification_record["prior_candidate_chain_length"] = len(prior_chain)
+        verification_record["prior_candidate_chain_prime_count"] = len(prior_primes)
     verification_record["verification_sha256"] = sha256_json(verification_record)
     (output_dir / "candidate_manifest.json").write_text(
         json.dumps(candidate_manifest, ensure_ascii=False, indent=2) + "\n",

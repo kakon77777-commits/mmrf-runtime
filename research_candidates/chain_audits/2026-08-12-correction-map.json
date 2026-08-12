@@ -1,0 +1,53 @@
+{
+  "schema": "mmrf-prime-expansion-chain-correction-1.0",
+  "as_of": "2026-08-12",
+  "status": "CORRECTED_CANDIDATE_CHAIN_UNPROMOTED",
+  "reason": "Generations 005 through 012 used only the immediately prior candidate shard when calculating cumulative ordinal values. Prime values, ranges, and stable v1.0 were unaffected.",
+  "base_manifest_sha256": "a5caea22a57efaac915c00dd92c655b1126e0b6d9b2b93790e48bc167733e0d1",
+  "stable_v1_0_changed": false,
+  "pre_repair_audit_sha256": "d5e799f9496adc7a7faed66e16f70f8f4d6eb7eaef66b4471020e2ec37243750",
+  "post_repair_audit_sha256": "c437a35db8841961e4799b54210e1108e87d8a7600e0e4d5e88c07a884775b99",
+  "replacement_chain_tip_manifest_sha256": "370be6de9ffd94b2b121e1199d274aa90584379a6c83bd602b60cdaee34db157",
+  "replacements": [
+    {
+      "candidate_generation": 5,
+      "superseded_manifest_sha256": "9ab2b083590dcaac0bdfa65ca8c1c22bea758223b3e4479c16288055ab771847",
+      "replacement_manifest_sha256": "a23e9dd97d2cbd064c41acf775bac8527f8eb61a5575f11f721f652485c53ba8"
+    },
+    {
+      "candidate_generation": 6,
+      "superseded_manifest_sha256": "81cc8ce7cdfa40bac836a9e279204192e8bf5e6f15cea7b6a9a12dd82b8ecb14",
+      "replacement_manifest_sha256": "5a1f705e8f6ecb9bffbdfae7b19d504088f5f0c71ccdc3a0a7af5055034f30c3"
+    },
+    {
+      "candidate_generation": 7,
+      "superseded_manifest_sha256": "da29c755da37fe6c75030d964c11825e038677153409722cfb578714375a4e66",
+      "replacement_manifest_sha256": "029a3134f17b92b508599bcc044de9795aa91827f2385667c1ff0a06e07cb542"
+    },
+    {
+      "candidate_generation": 8,
+      "superseded_manifest_sha256": "93a2af608e1c09116019db241b183442beab76cd44ff55353551eb93932b2b87",
+      "replacement_manifest_sha256": "1bf193cf2b37dad69423a7eec5e53a9158b185654c35463829cb66de18aa83cc"
+    },
+    {
+      "candidate_generation": 9,
+      "superseded_manifest_sha256": "b4a88ceb4d2bd619947d7d6bad34aabd6c9e7a2ff0d3befecc8be58599dbe005",
+      "replacement_manifest_sha256": "b7a0ac28a054ee22b2e14978a8eb4ba7d334b2bd10f0bbd644513ed94e8c8b79"
+    },
+    {
+      "candidate_generation": 10,
+      "superseded_manifest_sha256": "68cc26d580b299c65d05732911f3abdc3ed653a1de44971bbdfb6b3b933be5bd",
+      "replacement_manifest_sha256": "57f026da358fc38164e4a905d81622003b46a18b4d4bd342bc440c003393e3a4"
+    },
+    {
+      "candidate_generation": 11,
+      "superseded_manifest_sha256": "1cd497c22782079c02acefc07bca3c7f850f3fa26bb5dc52c82101cea6dbf532",
+      "replacement_manifest_sha256": "570fa314533359ed17b7186472a7c981d0f1da507c4178a9c9595f7c002190c8"
+    },
+    {
+      "candidate_generation": 12,
+      "superseded_manifest_sha256": "a1ee18026b7a646ea9da0633deaf11c091ba0a11306c84d02557d643aaf413c8",
+      "replacement_manifest_sha256": "df5047cb43539644312ada6f20407c73b93a1064135de23d9298a24651aeef46"
+    }
+  ]
+}

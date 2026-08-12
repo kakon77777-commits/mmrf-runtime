@@ -94,13 +94,26 @@ def load_base_primes(base_manifest: dict) -> np.ndarray:
     return np.concatenate(parts)
 
 
-def load_prior_candidate(candidate_dir: Path) -> tuple[dict, np.ndarray]:
+def candidate_manifest_catalog() -> dict[str, Path]:
+    catalog: dict[str, Path] = {}
+    for manifest_path in (ROOT / "research_candidates").glob("**/candidate_manifest.json"):
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest_sha = manifest.get("manifest_sha256")
+        if manifest_sha in catalog and catalog[manifest_sha] != manifest_path.parent:
+            raise SystemExit(f"duplicate_candidate_manifest_sha256:{manifest_sha}")
+        catalog[manifest_sha] = manifest_path.parent
+    return catalog
+
+
+def load_candidate_entry(candidate_dir: Path) -> tuple[dict, dict[str, np.ndarray]]:
     candidate_dir = candidate_dir.resolve()
     manifest = json.loads((candidate_dir / "candidate_manifest.json").read_text(encoding="utf-8"))
     review = json.loads((candidate_dir / "independent_review.json").read_text(encoding="utf-8"))
     record = manifest["shards"][0]
     with np.load(ROOT / record["file_path"], allow_pickle=False) as archive:
-        primes = np.asarray(archive["prime"], dtype=np.int64)
+        if tuple(archive.files) != V09_COLUMNS:
+            raise SystemExit("prior_candidate_columns_mismatch")
+        arrays = {name: np.asarray(archive[name]) for name in V09_COLUMNS}
     manifest_hash_ok = manifest["manifest_sha256"] == sha256_json(
         {key: value for key, value in manifest.items() if key != "manifest_sha256"}
     )
@@ -108,9 +121,78 @@ def load_prior_candidate(candidate_dir: Path) -> tuple[dict, np.ndarray]:
         raise SystemExit("prior_candidate_manifest_invalid")
     if review.get("valid") is not True or review.get("candidate_manifest_sha256") != manifest["manifest_sha256"]:
         raise SystemExit("prior_candidate_independent_review_invalid")
-    if len(primes) != int(record["row_count"]):
+    if len(arrays["prime"]) != int(record["row_count"]):
         raise SystemExit("prior_candidate_row_count_mismatch")
-    return manifest, primes
+    if file_sha256(ROOT / record["file_path"]) != record["file_sha256"]:
+        raise SystemExit("prior_candidate_transport_hash_mismatch")
+    if logical_content_sha256(arrays) != record["content_sha256"]:
+        raise SystemExit("prior_candidate_logical_hash_mismatch")
+    return manifest, arrays
+
+
+def load_prior_candidate_chain(candidate_dir: Path, base: dict) -> tuple[dict, np.ndarray, list[dict]]:
+    catalog = candidate_manifest_catalog()
+    reverse_chain: list[tuple[dict, dict[str, np.ndarray]]] = []
+    seen: set[str] = set()
+    current_dir = candidate_dir.resolve()
+    while True:
+        manifest, arrays = load_candidate_entry(current_dir)
+        manifest_sha = manifest["manifest_sha256"]
+        if manifest_sha in seen:
+            raise SystemExit("prior_candidate_chain_cycle")
+        seen.add(manifest_sha)
+        reverse_chain.append((manifest, arrays))
+        prior_sha = manifest.get("prior_candidate_manifest_sha256")
+        if prior_sha is None:
+            break
+        if prior_sha not in catalog:
+            raise SystemExit(f"prior_candidate_manifest_not_found:{prior_sha}")
+        current_dir = catalog[prior_sha]
+
+    chain = list(reversed(reverse_chain))
+    expected_generation = int(base["generation"]) + 1
+    expected_start = int(base["limit_exclusive"])
+    expected_shard_index = int(base["shard_count"])
+    expected_ordinal = int(base["prime_count"]) + 1
+    previous: dict | None = None
+    chain_primes: list[np.ndarray] = []
+    for manifest, arrays in chain:
+        record = manifest["shards"][0]
+        primes = np.asarray(arrays["prime"], dtype=np.int64)
+        ordinals = np.asarray(arrays["ordinal"], dtype=np.int64)
+        checks = (
+            manifest.get("base_manifest_sha256") == base["manifest_sha256"],
+            int(manifest["candidate_generation"]) == expected_generation,
+            int(manifest["range_start"]) == expected_start,
+            int(manifest["range_end_exclusive"]) == expected_start + int(base["shard_size"]),
+            int(record["shard_index"]) == expected_shard_index,
+            np.array_equal(
+                ordinals,
+                np.arange(expected_ordinal, expected_ordinal + len(primes), dtype=np.int64),
+            ),
+        )
+        if not all(checks):
+            raise SystemExit(
+                f"prior_candidate_full_chain_invalid:generation={expected_generation}"
+            )
+        if previous is None:
+            direct_binding_ok = "prior_candidate_manifest_sha256" not in manifest
+        else:
+            direct_binding_ok = (
+                manifest.get("prior_candidate_manifest_sha256") == previous["manifest_sha256"]
+                and int(manifest.get("prior_candidate_generation", -1))
+                == int(previous["candidate_generation"])
+            )
+        if not direct_binding_ok:
+            raise SystemExit("prior_candidate_direct_binding_invalid")
+        chain_primes.append(primes)
+        previous = manifest
+        expected_generation += 1
+        expected_start = int(manifest["range_end_exclusive"])
+        expected_shard_index += 1
+        expected_ordinal += len(primes)
+
+    return chain[-1][0], np.concatenate(chain_primes), [item[0] for item in chain]
 
 
 def main() -> int:
@@ -129,8 +211,12 @@ def main() -> int:
     base_primes = load_base_primes(base)
     prior_candidate = None
     prior_primes = np.asarray([], dtype=np.int64)
+    prior_chain: list[dict] = []
     if args.prior_candidate_dir:
-        prior_candidate, prior_primes = load_prior_candidate(args.prior_candidate_dir)
+        prior_candidate, prior_primes, prior_chain = load_prior_candidate_chain(
+            args.prior_candidate_dir,
+            base,
+        )
     elif "prior_candidate_manifest_sha256" in candidate:
         raise SystemExit("prior_candidate_dir_required_for_continued_candidate")
     known_primes = np.concatenate([base_primes, prior_primes])
@@ -173,6 +259,7 @@ def main() -> int:
                 and candidate.get("prior_candidate_generation") == prior_candidate.get("candidate_generation")
                 and start == int(prior_candidate["range_end_exclusive"])
                 and int(record["shard_index"]) == int(prior_candidate["shards"][0]["shard_index"]) + 1
+                and int(candidate["candidate_generation"]) == int(prior_candidate["candidate_generation"]) + 1
             )
         ),
         "status_unpromoted": candidate["status"] == "CANDIDATE_UNPROMOTED",
@@ -204,6 +291,7 @@ def main() -> int:
         "range": [start, end],
         "prime_count": len(primes),
         "logical_content_sha256": record["content_sha256"],
+        "prior_candidate_chain_length": len(prior_chain),
         "checks": checks,
         "valid": all(checks.values()),
     }

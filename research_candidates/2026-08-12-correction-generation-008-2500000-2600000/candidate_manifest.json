@@ -1,0 +1,59 @@
+{
+  "schema": "mmrf-prime-expansion-candidate-1.0",
+  "candidate_id": "mmrf-expansion-2026-08-12-2500000-2600000",
+  "status": "CANDIDATE_UNPROMOTED",
+  "dataset_id": "mmrf-public-prime-lake",
+  "base_manifest_sha256": "a5caea22a57efaac915c00dd92c655b1126e0b6d9b2b93790e48bc167733e0d1",
+  "base_generation": 2,
+  "candidate_generation": 8,
+  "range_start": 2500000,
+  "range_end_exclusive": 2600000,
+  "shard_size": 100000,
+  "shard_count_increment": 1,
+  "prime_count_increment": 6808,
+  "column_order": [
+    "prime",
+    "ordinal",
+    "bit_length",
+    "decimal_digits",
+    "previous_gap",
+    "residue_6",
+    "residue_30",
+    "residue_210",
+    "family_flags",
+    "wheel30_class"
+  ],
+  "cid_semantics": "MMRF-NPZ-COLUMNAR-0.9 logical canonical column content",
+  "safety": {
+    "classification": "L0_PUBLIC_MATH",
+    "source_factor_relations": false,
+    "rsa_target_endpoint": false,
+    "factor_candidate_endpoint": false,
+    "range_narrowing_endpoint": false,
+    "exact_prime_list_endpoint": false,
+    "raw_factor_export": false
+  },
+  "shards": [
+    {
+      "shard_index": 25,
+      "cid": "mmrf-shard:763d684b0e6cb1ee5d278af95274140e24377d4a7d76c49ad6e7e6793c312a1a",
+      "range_start": 2500000,
+      "range_end_exclusive": 2600000,
+      "row_count": 6808,
+      "file_path": "research_candidates/2026-08-12-correction-generation-008-2500000-2600000/shards/shard_000025_763d684b0e6cb1ee.npz",
+      "file_sha256": "88a73c311ee1878bab493f18421d8019673e958251348ad77c8f144cc6d74aec",
+      "content_sha256": "763d684b0e6cb1ee5d278af95274140e24377d4a7d76c49ad6e7e6793c312a1a"
+    }
+  ],
+  "required_review": [
+    "independent_math_validation",
+    "independent_data_integrity_validation"
+  ],
+  "created_on": "2026-08-12",
+  "prior_candidate_id": "mmrf-expansion-2026-08-12-2400000-2500000",
+  "prior_candidate_manifest_sha256": "029a3134f17b92b508599bcc044de9795aa91827f2385667c1ff0a06e07cb542",
+  "prior_candidate_generation": 7,
+  "supersedes_candidate_manifest_sha256": "93a2af608e1c09116019db241b183442beab76cd44ff55353551eb93932b2b87",
+  "revision_reason": "full_candidate_chain_ordinal_repair",
+  "manifest_sha256": "1bf193cf2b37dad69423a7eec5e53a9158b185654c35463829cb66de18aa83cc"
+}

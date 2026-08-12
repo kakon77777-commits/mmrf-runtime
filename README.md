@@ -58,6 +58,22 @@ python workflows/verify_prime_expansion_candidate.py \
   --prior-candidate-dir research_candidates/YYYY-MM-DD-generation-003-2000000-2100000
 ```
 
-The continuation requires the prior candidate's independent review and keeps
-the stable v1.0 manifest as the immutable anchor. Both candidates remain
-unpromoted until the governance chain approves a new stable generation.
+The continuation follows every `prior_candidate_manifest_sha256` back to the
+stable v1.0 anchor. It validates each manifest, shard, independent review,
+generation, range, shard index, and cumulative ordinal sequence before it can
+create the next candidate. All candidates remain unpromoted until the
+governance chain approves a new stable generation.
+
+Audit one exact branch by naming its tip:
+
+```bash
+python workflows/audit_prime_expansion_chain.py \
+  --as-of YYYY-MM-DD \
+  --tip-candidate-dir research_candidates/YYYY-MM-DD-generation-NNN-START-END \
+  --output research_candidates/chain_audits/YYYY-MM-DD.json
+```
+
+If an unpromoted branch is corrected, preserve its original artifacts, add a
+`SUPERSEDED.json` pointer, and bind the replacement manifest with
+`supersedes_candidate_manifest_sha256`. Never rewrite the frozen stable data or
+silently delete candidate history.
