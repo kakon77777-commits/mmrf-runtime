@@ -1,0 +1,57 @@
+{
+  "schema": "mmrf-prime-expansion-candidate-1.0",
+  "candidate_id": "mmrf-expansion-2026-08-19-3700000-3800000",
+  "status": "CANDIDATE_UNPROMOTED",
+  "dataset_id": "mmrf-public-prime-lake",
+  "base_manifest_sha256": "a5caea22a57efaac915c00dd92c655b1126e0b6d9b2b93790e48bc167733e0d1",
+  "base_generation": 2,
+  "candidate_generation": 20,
+  "range_start": 3700000,
+  "range_end_exclusive": 3800000,
+  "shard_size": 100000,
+  "shard_count_increment": 1,
+  "prime_count_increment": 6590,
+  "column_order": [
+    "prime",
+    "ordinal",
+    "bit_length",
+    "decimal_digits",
+    "previous_gap",
+    "residue_6",
+    "residue_30",
+    "residue_210",
+    "family_flags",
+    "wheel30_class"
+  ],
+  "cid_semantics": "MMRF-NPZ-COLUMNAR-0.9 logical canonical column content",
+  "safety": {
+    "classification": "L0_PUBLIC_MATH",
+    "source_factor_relations": false,
+    "rsa_target_endpoint": false,
+    "factor_candidate_endpoint": false,
+    "range_narrowing_endpoint": false,
+    "exact_prime_list_endpoint": false,
+    "raw_factor_export": false
+  },
+  "shards": [
+    {
+      "shard_index": 37,
+      "cid": "mmrf-shard:2cad3eb612abf70533a843a9b74b504944194a2be20c9bfdb385f22ccca743dc",
+      "range_start": 3700000,
+      "range_end_exclusive": 3800000,
+      "row_count": 6590,
+      "file_path": "research_candidates/2026-08-19-generation-020-3700000-3800000/shards/shard_000037_2cad3eb612abf705.npz",
+      "file_sha256": "03647b2f3e39cac03c0ff76cc96bf9ab77d18c94e0983fdd7a0e9de353c6f7ef",
+      "content_sha256": "2cad3eb612abf70533a843a9b74b504944194a2be20c9bfdb385f22ccca743dc"
+    }
+  ],
+  "required_review": [
+    "independent_math_validation",
+    "independent_data_integrity_validation"
+  ],
+  "created_on": "2026-08-19",
+  "prior_candidate_id": "mmrf-expansion-2026-08-18-3600000-3700000",
+  "prior_candidate_manifest_sha256": "ea0c7a0f6caf8771b69a2d6b7a519994f68b0bafdc19bcbbc7838d88da7f1e54",
+  "prior_candidate_generation": 19,
+  "manifest_sha256": "e8ec45d6d938b6b3da6cf8d508685e2a40695e787982b70570b6aa0f8512370e"
+}
