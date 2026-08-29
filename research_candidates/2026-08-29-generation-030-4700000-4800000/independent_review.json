@@ -1,0 +1,34 @@
+{
+  "schema": "mmrf-prime-expansion-independent-review-1.0",
+  "candidate_id": "mmrf-expansion-2026-08-29-4700000-4800000",
+  "candidate_manifest_sha256": "c29c231466b66d862a026d0dbed01a2d892ce96fdff48a0af5653eff77a34d18",
+  "shard_index": 47,
+  "range": [
+    4700000,
+    4800000
+  ],
+  "prime_count": 6475,
+  "logical_content_sha256": "61cde32e3d6249a9cf647964bc01667913339f4163d805c1aa034a2b14d5555d",
+  "prior_candidate_chain_length": 27,
+  "checks": {
+    "base_manifest_hash_ok": true,
+    "candidate_manifest_hash_ok": true,
+    "base_binding_ok": true,
+    "prior_candidate_chain_ok": true,
+    "status_unpromoted": true,
+    "columns_exact": true,
+    "row_count_ok": true,
+    "range_ok": true,
+    "strictly_increasing": true,
+    "segmented_sieve_match": true,
+    "ordinal_continuity": true,
+    "previous_gap_match": true,
+    "family_flags_match": true,
+    "wheel30_class_match": true,
+    "logical_content_hash_ok": true,
+    "transport_file_hash_ok": true,
+    "candidate_range_is_next_shard": true
+  },
+  "valid": true,
+  "review_sha256": "48aada8e345451d890a296e77c25b69f63aa780ff358b1699b19370494f21116"
+}
